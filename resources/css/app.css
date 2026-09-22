@@ -1,11 +1,167 @@
-@import 'tailwindcss';
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
 
+@import 'tailwindcss';
+@import '../../node_modules/preline/variants.css';
+@import '../../node_modules/preline/css/themes/theme.css';
+
+@source '../../node_modules/preline/dist/*.js';
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 @source '../../storage/framework/views/*.php';
 @source '../**/*.blade.php';
 @source '../**/*.js';
 
+@plugin '@tailwindcss/forms';
+
 @theme {
-    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-        'Segoe UI Symbol', 'Noto Color Emoji';
+    /* =========================
+       TYPOGRAPHY
+    ========================== */
+    --font-sans: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif,
+        'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+
+
+    /* =========================
+       BRAND — BASE #129669
+    ========================== */
+
+    --color-brand-50: #f0fdf8;
+    --color-brand-100: #dcfceb;
+    --color-brand-200: #bbf7d7;
+    --color-brand-300: #86efc0;
+    --color-brand-400: #45d79b;
+    --color-brand-500: #21b87e;
+
+    /* Main brand */
+    --color-brand-600: #129669;
+
+    --color-brand-700: #0e7855;
+    --color-brand-800: #0d6047;
+    --color-brand-900: #0b4e3b;
+    --color-brand-950: #052c22;
+
+
+    /* Alias supaya mudah dipakai */
+    --color-brand: #129669;
+    --color-primary: #129669;
+
+    --color-primary-hover: #0e7855;
+    --color-primary-active: #0d6047;
+
+    --color-primary-soft: #dcfceb;
+    --color-primary-subtle: #f0fdf8;
+
+
+    /* =========================
+       ACCENT
+       Warm contrast untuk CTA / highlight
+    ========================== */
+
+    --color-accent-50: #fffbea;
+    --color-accent-100: #fff3c4;
+    --color-accent-200: #ffe78a;
+    --color-accent-300: #ffd64d;
+    --color-accent-400: #f7c948;
+
+    --color-accent-500: #f4b942;
+
+    --color-accent-600: #d99a24;
+    --color-accent-700: #ad741d;
+    --color-accent-800: #8c5b1c;
+    --color-accent-900: #744b1c;
+
+    --color-accent: #f4b942;
+
+
+    /* =========================
+       NEUTRAL / CANVAS
+    ========================== */
+
+    --color-canvas: #f8faf9;
+    --color-surface: #ffffff;
+
+    --color-surface-soft: #f4f7f5;
+    --color-surface-muted: #eef3f0;
+
+    --color-line: #e3e9e6;
+    --color-line-strong: #ccd7d1;
+
+
+    /* =========================
+       TEXT
+    ========================== */
+
+    --color-ink: #111814;
+
+    --color-heading: #111814;
+
+    --color-body: #37423c;
+
+    --color-muted: #6b756f;
+
+    --color-subtle: #929b96;
+
+    --color-disabled: #b9c0bc;
+
+
+    /* =========================
+       FEEDBACK / STATE
+    ========================== */
+
+    --color-success: #16a34a;
+    --color-success-soft: #dcfce7;
+
+    --color-warning: #f59e0b;
+    --color-warning-soft: #fef3c7;
+
+    --color-danger: #dc2626;
+    --color-danger-soft: #fee2e2;
+
+    --color-info: #2563eb;
+    --color-info-soft: #dbeafe;
+
+
+    /* =========================
+       SPECIAL UI TOKENS
+    ========================== */
+
+    --color-footer: #0d6047;
+    --color-footer-dark: #0b4e3b;
+
+    --color-overlay: rgb(0 0 0 / 0.38);
+
+    --color-on-brand: #ffffff;
+    --color-on-accent: #111814;
+}
+
+@layer base {
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        @apply bg-canvas font-sans text-ink antialiased;
+    }
+
+    button:not(:disabled),
+    [role='button']:not(:disabled) {
+        cursor: pointer;
+    }
+
+    :focus-visible {
+        @apply outline-2 outline-offset-2 outline-brand-600;
+    }
+}
+
+@layer components {
+    .partner-label {
+        @apply mx-auto text-center text-[9px] font-medium uppercase tracking-[0.15em] text-muted;
+    }
+
+    .partner-logo-box {
+        @apply mt-5 flex h-[68px] items-center justify-center;
+    }
+
+    .partner-logo {
+        @apply max-h-[52px] max-w-[140px] object-contain;
+    }
 }
