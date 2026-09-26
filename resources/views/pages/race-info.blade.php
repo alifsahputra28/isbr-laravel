@@ -1,87 +1,28 @@
 @extends('layouts.app')
 
 @section('content')
-
-    {{-- NAVBAR --}}
     <x-public.navbar variant="solid" />
 
-
     <main class="bg-white">
-
-        {{-- =====================================================
-             RACE INFORMATION
-        ====================================================== --}}
         <section class="py-14 sm:py-16 lg:py-20">
-
-            <div
-                class="mx-auto max-w-[1180px]
-                       px-6 sm:px-8
-                       lg:px-10"
-            >
-                <div class="mb-10 max-w-2xl">
-
-                    <p
-                        class="text-[11px]
-                               font-semibold
-                               uppercase
-                               tracking-[0.18em]
-                               text-brand-700"
-                    >
+            <div class="mx-auto max-w-[1180px] px-6 sm:px-8 lg:px-10">
+                <div class="mb-10 max-w-3xl">
+                    <p class="text-[11px] font-semibold uppercase tracking-[0.18em] text-brand-700">
                         Event Information
                     </p>
-
-                    <h1
-                        class="mt-2
-                               text-[36px]
-                               font-semibold
-                               tracking-[-0.04em]
-                               text-heading
-                               sm:text-[42px]"
-                    >
+                    <h1 class="mt-2 text-[36px] font-semibold tracking-[-0.04em] text-heading sm:text-[42px]">
                         Race Info
                     </h1>
-
-                    <p
-                        class="mt-3
-                               max-w-xl
-                               text-[15px]
-                               leading-7
-                               text-body"
-                    >
-                        Everything you need to know before race day,
-                        from race categories and schedules to regulations
-                        and jersey sizing.
+                    <p class="mt-3 max-w-2xl text-[15px] leading-7 text-body">
+                        Informasi kategori, Cut Off Time, BIB, medali, serta dukungan keselamatan Ibnu Sina Batam Run 2027.
                     </p>
-
                 </div>
 
-                {{-- TAB NAVIGATION --}}
                 <div class="overflow-x-auto">
-
-                    <nav
-                        class="flex min-w-max
-                               border-b border-line"
-                        role="tablist"
-                        aria-label="Race Information"
-                    >
-
-                        {{-- OVERVIEW --}}
+                    <nav class="flex min-w-max border-b border-line" role="tablist" aria-label="Race Information">
                         <button
                             type="button"
-                            class="active
-                                   hs-tab-active:border-brand-600
-                                   hs-tab-active:text-brand-700
-                                   -mb-px
-                                   inline-flex
-                                   items-center
-                                   border-b-2
-                                   border-transparent
-                                   px-5 py-4
-                                   text-sm
-                                   font-medium
-                                   text-muted
-                                   transition
-                                   hover:text-ink"
+                            class="active -mb-px inline-flex items-center border-b-2 border-transparent px-5 py-4 text-sm font-medium text-muted transition hover:text-ink hs-tab-active:border-brand-600 hs-tab-active:text-brand-700"
                             id="race-tab-overview"
                             data-hs-tab="#race-panel-overview"
                             aria-controls="race-panel-overview"
@@ -89,24 +30,9 @@
                         >
                             Overview
                         </button>
-
-
-                        {{-- SCHEDULE --}}
                         <button
                             type="button"
-                            class="hs-tab-active:border-brand-600
-                                   hs-tab-active:text-brand-700
-                                   -mb-px
-                                   inline-flex
-                                   items-center
-                                   border-b-2
-                                   border-transparent
-                                   px-5 py-4
-                                   text-sm
-                                   font-medium
-                                   text-muted
-                                   transition
-                                   hover:text-ink"
+                            class="-mb-px inline-flex items-center border-b-2 border-transparent px-5 py-4 text-sm font-medium text-muted transition hover:text-ink hs-tab-active:border-brand-600 hs-tab-active:text-brand-700"
                             id="race-tab-schedule"
                             data-hs-tab="#race-panel-schedule"
                             aria-controls="race-panel-schedule"
@@ -114,49 +40,19 @@
                         >
                             Schedule
                         </button>
-
-
-                        {{-- RULES --}}
                         <button
                             type="button"
-                            class="hs-tab-active:border-brand-600
-                                   hs-tab-active:text-brand-700
-                                   -mb-px
-                                   inline-flex
-                                   items-center
-                                   border-b-2
-                                   border-transparent
-                                   px-5 py-4
-                                   text-sm
-                                   font-medium
-                                   text-muted
-                                   transition
-                                   hover:text-ink"
+                            class="-mb-px inline-flex items-center border-b-2 border-transparent px-5 py-4 text-sm font-medium text-muted transition hover:text-ink hs-tab-active:border-brand-600 hs-tab-active:text-brand-700"
                             id="race-tab-rules"
                             data-hs-tab="#race-panel-rules"
                             aria-controls="race-panel-rules"
                             role="tab"
                         >
-                            Rules & Regulations
+                            Rules &amp; Regulations
                         </button>
-
-
-                        {{-- SIZE CHART --}}
                         <button
                             type="button"
-                            class="hs-tab-active:border-brand-600
-                                   hs-tab-active:text-brand-700
-                                   -mb-px
-                                   inline-flex
-                                   items-center
-                                   border-b-2
-                                   border-transparent
-                                   px-5 py-4
-                                   text-sm
-                                   font-medium
-                                   text-muted
-                                   transition
-                                   hover:text-ink"
+                            class="-mb-px inline-flex items-center border-b-2 border-transparent px-5 py-4 text-sm font-medium text-muted transition hover:text-ink hs-tab-active:border-brand-600 hs-tab-active:text-brand-700"
                             id="race-tab-size"
                             data-hs-tab="#race-panel-size"
                             aria-controls="race-panel-size"
@@ -164,710 +60,144 @@
                         >
                             Size Chart
                         </button>
-
                     </nav>
-
                 </div>
 
-
-
-                {{-- =================================================
-                     TAB 1 — OVERVIEW
-                ================================================== --}}
-                <div
-                    id="race-panel-overview"
-                    role="tabpanel"
-                    aria-labelledby="race-tab-overview"
-                    class="pt-10"
-                >
-
-                    {{-- QUICK INFO --}}
-                    <div
-                        class="grid gap-px
-                               overflow-hidden
-                               rounded-2xl
-                               border border-line
-                               bg-line
-                               sm:grid-cols-2
-                               lg:grid-cols-4"
-                    >
-
-                        <div class="bg-white p-6">
-                            <p class="text-xs font-medium text-muted">
-                                Race Date
-                            </p>
-
-                            <p class="mt-2 font-semibold text-heading">
-                                21 June 2026
-                            </p>
-                        </div>
-
-
-                        <div class="bg-white p-6">
-                            <p class="text-xs font-medium text-muted">
-                                Location
-                            </p>
-
-                            <p class="mt-2 font-semibold text-heading">
-                                Batam
-                            </p>
-                        </div>
-
-
-                        <div class="bg-white p-6">
-                            <p class="text-xs font-medium text-muted">
-                                Categories
-                            </p>
-
-                            <p class="mt-2 font-semibold text-heading">
-                                4 Race Categories
-                            </p>
-                        </div>
-
-
-                        <div class="bg-white p-6">
-                            <p class="text-xs font-medium text-muted">
-                                Registration
-                            </p>
-
-                            <p class="mt-2 font-semibold text-brand-700">
-                                Open
-                            </p>
-                        </div>
-
+                <div id="race-panel-overview" role="tabpanel" aria-labelledby="race-tab-overview" class="pt-10">
+                    <div class="grid gap-px overflow-hidden rounded-2xl border border-line bg-line sm:grid-cols-2 lg:grid-cols-4">
+                        @foreach ([
+                            ['Race Date', '-'],
+                            ['Venue', '-'],
+                            ['Start Time', '-'],
+                            ['Flag Off', '-'],
+                        ] as [$label, $value])
+                            <div class="bg-white p-6">
+                                <p class="text-xs font-semibold uppercase tracking-[0.12em] text-muted">{{ $label }}</p>
+                                <p class="mt-3 font-race text-[28px] font-semibold leading-none text-heading">{{ $value }}</p>
+                            </div>
+                        @endforeach
                     </div>
 
+                    <section class="mt-12">
+                        <div class="max-w-2xl">
+                            <p class="text-[11px] font-semibold uppercase tracking-[0.18em] text-brand-700">Race Categories</p>
+                            <h2 class="mt-2 text-[26px] font-semibold tracking-[-0.03em] text-heading">Kategori Lomba</h2>
+                        </div>
 
-
-                    {{-- CATEGORY TITLE --}}
-                    <div class="mt-12">
-
-                        <h2
-                            class="text-[26px]
-                                   font-semibold
-                                   tracking-[-0.03em]
-                                   text-heading"
-                        >
-                            Race Categories
-                        </h2>
-
-                        <p class="mt-2 text-sm text-muted">
-                            Choose the distance that matches your challenge.
-                        </p>
-
-                    </div>
-
-
-                    {{-- CATEGORY GRID --}}
-                    @php
-                        $categories = [
-                            [
-                                'name' => 'Marathon',
-                                'distance' => '42K',
-                                'price' => 'Rp 1.200.000',
-                                'package' => 'BIB Number, Jersey, Finisher Medal, Finisher Tee',
-                            ],
-                            [
-                                'name' => 'Half Marathon',
-                                'distance' => '21K',
-                                'price' => 'Rp 900.000',
-                                'package' => 'BIB Number, Jersey, Finisher Medal, Finisher Tee',
-                            ],
-                            [
-                                'name' => '10K',
-                                'distance' => '10K',
-                                'price' => 'Rp 800.000',
-                                'package' => 'BIB Number, Jersey, Finisher Medal',
-                            ],
-                            [
-                                'name' => '5K Fun Run',
-                                'distance' => '5K',
-                                'price' => 'Rp 450.000',
-                                'package' => 'BIB Number, Jersey, Finisher Medal',
-                            ],
-                        ];
-                    @endphp
-
-
-                    <div
-                        class="mt-6
-                               grid gap-4
-                               md:grid-cols-2
-                               xl:grid-cols-4"
-                    >
-
-                        @foreach ($categories as $category)
-
-                            <article
-                                class="rounded-2xl
-                                       border border-line
-                                       bg-white
-                                       p-6
-                                       transition
-                                       hover:border-brand-300"
-                            >
-
-                                <div
-                                    class="flex items-start
-                                           justify-between gap-4"
-                                >
-
-                                    <div>
-
-                                        <p
-                                            class="text-xs
-                                                   font-semibold
-                                                   uppercase
-                                                   tracking-[0.12em]
-                                                   text-brand-700"
-                                        >
-                                            {{ $category['distance'] }}
-                                        </p>
-
-                                        <h3
-                                            class="mt-2
-                                                   text-lg
-                                                   font-semibold
-                                                   text-heading"
-                                        >
-                                            {{ $category['name'] }}
-                                        </h3>
-
-                                    </div>
-
-                                </div>
-
-
-                                <div class="my-5 border-t border-line"></div>
-
-
-                                <p
-                                    class="text-xl
-                                           font-semibold
-                                           tracking-[-0.025em]
-                                           text-brand-700"
-                                >
-                                    {{ $category['price'] }}
-                                </p>
-
-
-                                <p
-                                    class="mt-3
-                                           text-sm
-                                           leading-6
-                                           text-muted"
-                                >
-                                    {{ $category['package'] }}
-                                </p>
-
+                        <div class="mt-6 grid gap-5 lg:grid-cols-2">
+                            <article class="rounded-2xl border border-line bg-white p-6">
+                                <p class="text-[11px] font-semibold uppercase tracking-[0.15em] text-brand-700">Non-competitive</p>
+                                <h3 class="mt-3 font-race text-[34px] font-bold leading-none text-heading">Fun Run 5K</h3>
+                                <ul class="mt-5 space-y-2 text-[14px] leading-6 text-body">
+                                    <li>Usia minimal 13 tahun.</li>
+                                    <li>Tidak ada batas usia maksimal.</li>
+                                    <li>Wajib mengikuti ketentuan keselamatan dan Race Rules.</li>
+                                </ul>
                             </article>
 
-                        @endforeach
-
-                    </div>
-
-                </div>
-
-
-
-                {{-- =================================================
-                     TAB 2 — SCHEDULE
-                ================================================== --}}
-                <div
-                    id="race-panel-schedule"
-                    class="hidden pt-10"
-                    role="tabpanel"
-                    aria-labelledby="race-tab-schedule"
-                >
-
-                    <div class="max-w-4xl">
-
-                        <h2
-                            class="text-[26px]
-                                   font-semibold
-                                   tracking-[-0.03em]
-                                   text-heading"
-                        >
-                            Race Day Schedule
-                        </h2>
-
-                        <p class="mt-2 text-sm text-muted">
-                            Please arrive early and follow your designated
-                            starting time.
-                        </p>
-
-
-                        <div
-                            class="mt-8
-                                   overflow-hidden
-                                   rounded-2xl
-                                   border border-line"
-                        >
-
-                            @foreach ([
-                                ['04:30', 'Race Village Open', 'All participants'],
-                                ['04:45', 'Marathon Start', '42K'],
-                                ['05:15', 'Half Marathon Start', '21K'],
-                                ['06:00', '10K Start', '10K'],
-                                ['06:15', '5K Fun Run Start', '5K'],
-                                ['09:30', 'Award Ceremony', 'Main Stage'],
-                            ] as $schedule)
-
-                                <div
-                                    class="grid grid-cols-[90px_1fr]
-                                           gap-5
-                                           border-b border-line
-                                           px-6 py-5
-                                           last:border-b-0
-                                           sm:grid-cols-[110px_1fr_180px]"
-                                >
-
-                                    <p
-                                        class="font-semibold
-                                               text-brand-700"
-                                    >
-                                        {{ $schedule[0] }}
-                                    </p>
-
-                                    <p
-                                        class="font-medium
-                                               text-heading"
-                                    >
-                                        {{ $schedule[1] }}
-                                    </p>
-
-                                    <p
-                                        class="hidden
-                                               text-sm
-                                               text-muted
-                                               sm:block"
-                                    >
-                                        {{ $schedule[2] }}
-                                    </p>
-
+                            <article class="rounded-2xl border border-line bg-white p-6">
+                                <p class="text-[11px] font-semibold uppercase tracking-[0.15em] text-brand-700">Competitive</p>
+                                <h3 class="mt-3 font-race text-[34px] font-bold leading-none text-heading">Race 10K</h3>
+                                <div class="mt-5 grid gap-3 sm:grid-cols-2">
+                                    @foreach ([
+                                        ['10K National Men', 'WNI · Pria · 13–39 tahun'],
+                                        ['10K National Women', 'WNI · Wanita · 13–39 tahun'],
+                                        ['10K Open International Men', 'WNA · Pria · minimal 17 tahun'],
+                                        ['10K Open International Women', 'WNA · Wanita · minimal 17 tahun'],
+                                        ['10K National Master 40+ Men', 'WNI · Pria · usia 40+'],
+                                        ['10K National Master 40+ Women', 'WNI · Wanita · usia 40+'],
+                                    ] as [$name, $requirements])
+                                        <div class="rounded-xl bg-surface-soft p-4">
+                                            <p class="font-race text-xl font-semibold leading-tight text-heading">{{ $name }}</p>
+                                            <p class="mt-2 text-xs leading-5 text-muted">{{ $requirements }}</p>
+                                        </div>
+                                    @endforeach
                                 </div>
-
-                            @endforeach
-
+                            </article>
                         </div>
 
+                        <div class="mt-5 rounded-xl border border-brand-200 bg-brand-50 p-5 text-[14px] leading-7 text-body">
+                            Usia dihitung pada hari pelaksanaan lomba berdasarkan tanggal lahir pada identitas resmi.
+                            Peserta WNI berusia 13–16 tahun dapat mengikuti 10K National dengan persetujuan orang tua atau wali
+                            dan wajib menyerahkan Surat Izin Orang Tua/Wali pada saat Race Pack Collection.
+                        </div>
+                    </section>
+                </div>
 
+                <div id="race-panel-schedule" class="hidden pt-10" role="tabpanel" aria-labelledby="race-tab-schedule">
+                    <x-public.coming-soon />
+                </div>
 
-                        {{-- CUT OFF --}}
-                        <div class="mt-12">
+                <div id="race-panel-rules" class="hidden pt-10" role="tabpanel" aria-labelledby="race-tab-rules">
+                    <div class="grid gap-6 lg:grid-cols-2">
+                        <section class="rounded-2xl border border-line bg-white p-6 sm:p-7">
+                            <p class="text-[11px] font-semibold uppercase tracking-[0.18em] text-brand-700">Cut Off Time (COT)</p>
+                            <div class="mt-5 grid gap-4 sm:grid-cols-2">
+                                <div class="rounded-xl bg-surface-soft p-5">
+                                    <p class="font-race text-2xl font-semibold text-heading">Fun Run 5K</p>
+                                    <p class="mt-2 font-race text-[34px] font-bold leading-none text-brand-700">90 menit</p>
+                                    <p class="mt-2 text-xs text-muted">1 jam 30 menit</p>
+                                </div>
+                                <div class="rounded-xl bg-surface-soft p-5">
+                                    <p class="font-race text-2xl font-semibold text-heading">Race 10K</p>
+                                    <p class="mt-2 font-race text-[34px] font-bold leading-none text-brand-700">120 menit</p>
+                                    <p class="mt-2 text-xs text-muted">2 jam</p>
+                                </div>
+                            </div>
+                            <p class="mt-5 text-[14px] leading-7 text-body">
+                                Peserta yang melewati COT akan diarahkan oleh marshal atau dapat dijemput menggunakan
+                                Bus Sweeper maupun mobil evakuasi.
+                            </p>
+                        </section>
 
-                            <h3
-                                class="text-lg
-                                       font-semibold
-                                       text-heading"
-                            >
-                                Cut Off Time
-                            </h3>
+                        <section class="rounded-2xl bg-brand-800 p-6 text-white sm:p-7">
+                            <p class="text-[11px] font-semibold uppercase tracking-[0.18em] text-brand-200">Nomor BIB</p>
+                            <h2 class="mt-3 font-race text-[34px] font-bold leading-none">NO BIB, NO START, NO MEDAL.</h2>
+                            <ul class="mt-6 space-y-3 text-[14px] leading-7 text-white/85">
+                                <li>BIB resmi wajib digunakan dan dipasang di bagian depan dada agar terlihat jelas.</li>
+                                <li>Peserta tanpa BIB tidak diperbolehkan melakukan start.</li>
+                                <li>BIB tidak dapat dipindahtangankan.</li>
+                                <li>BIB palsu atau pinjaman dapat menyebabkan diskualifikasi.</li>
+                            </ul>
+                        </section>
 
+                        <section class="rounded-2xl border border-line bg-white p-6 sm:p-7">
+                            <p class="text-[11px] font-semibold uppercase tracking-[0.18em] text-brand-700">Finisher Medal</p>
+                            <p class="mt-4 text-[14px] leading-7 text-body">
+                                Peserta yang menggunakan BIB resmi selama perlombaan dan menyelesaikan lomba sesuai ketentuan
+                                berhak memperoleh finisher medal. Peserta yang melewati COT tetap dapat memperoleh medali
+                                selama menggunakan BIB resmi dan masuk ke area refreshment zone.
+                            </p>
+                        </section>
 
-                            <div
-                                class="mt-5
-                                       grid gap-4
-                                       sm:grid-cols-2"
-                            >
-
+                        <section class="rounded-2xl border border-line bg-white p-6 sm:p-7">
+                            <p class="text-[11px] font-semibold uppercase tracking-[0.18em] text-brand-700">Safety &amp; Medical</p>
+                            <div class="mt-5 grid grid-cols-2 gap-3">
                                 @foreach ([
-                                    ['Marathon', '7 Hours'],
-                                    ['Half Marathon', '4 Hours'],
-                                    ['10K', '2 Hours'],
-                                    ['5K Fun Run', '1 Hour'],
-                                ] as $cutoff)
-
-                                    <div
-                                        class="flex items-center
-                                               justify-between
-                                               rounded-xl
-                                               border border-line
-                                               p-5"
-                                    >
-
-                                        <span
-                                            class="text-sm
-                                                   font-medium
-                                                   text-heading"
-                                        >
-                                            {{ $cutoff[0] }}
-                                        </span>
-
-                                        <span
-                                            class="text-sm
-                                                   font-semibold
-                                                   text-brand-700"
-                                        >
-                                            {{ $cutoff[1] }}
-                                        </span>
-
+                                    ['4', 'Water Station'],
+                                    ['3', 'Unit Ambulans'],
+                                    ['2', 'Mobil Evakuasi'],
+                                    ['1', 'Bus Sweeper'],
+                                ] as [$number, $label])
+                                    <div class="rounded-xl bg-surface-soft p-4">
+                                        <p class="font-race text-[30px] font-bold leading-none text-brand-700">{{ $number }}</p>
+                                        <p class="mt-2 text-xs font-medium text-body">{{ $label }}</p>
                                     </div>
-
                                 @endforeach
-
                             </div>
-
-                        </div>
-
+                            <p class="mt-5 text-[14px] leading-7 text-body">
+                                Dukungan medis disiapkan bersama Klinik Ibnu Sina dan Puskesmas Kota Batam.
+                            </p>
+                        </section>
                     </div>
-
                 </div>
 
-
-
-                {{-- =================================================
-                     TAB 3 — RULES
-                ================================================== --}}
-                <div
-                    id="race-panel-rules"
-                    class="hidden pt-10"
-                    role="tabpanel"
-                    aria-labelledby="race-tab-rules"
-                >
-
-                    <div class="max-w-4xl">
-
-                        <h2
-                            class="text-[26px]
-                                   font-semibold
-                                   tracking-[-0.03em]
-                                   text-heading"
-                        >
-                            Rules & Regulations
-                        </h2>
-
-                        <p
-                            class="mt-2
-                                   text-sm
-                                   leading-6
-                                   text-muted"
-                        >
-                            Please review the participant requirements
-                            before completing your registration.
-                        </p>
-
-
-                        {{-- PRELINE ACCORDION --}}
-                        <div
-                            class="hs-accordion-group
-                                   mt-8
-                                   space-y-3"
-                        >
-
-                            {{-- ELIGIBILITY --}}
-                            <div
-                                class="hs-accordion
-                                       overflow-hidden
-                                       rounded-xl
-                                       border border-line
-                                       bg-white"
-                                id="rules-eligibility"
-                            >
-
-                                <button
-                                    class="hs-accordion-toggle
-                                           flex w-full
-                                           items-center
-                                           justify-between
-                                           px-6 py-5
-                                           text-left
-                                           font-semibold
-                                           text-heading"
-                                    type="button"
-                                >
-                                    Participant Eligibility
-
-                                    <svg
-                                        class="size-4
-                                               transition-transform
-                                               hs-accordion-active:rotate-180"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        fill="none"
-                                        viewBox="0 0 24 24"
-                                        stroke="currentColor"
-                                    >
-                                        <path
-                                            stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                            stroke-width="2"
-                                            d="m6 9 6 6 6-6"
-                                        />
-                                    </svg>
-
-                                </button>
-
-                                <div
-                                    class="hs-accordion-content
-                                           hidden w-full
-                                           overflow-hidden
-                                           transition-[height]"
-                                >
-
-                                    <div
-                                        class="border-t border-line
-                                               px-6 py-5"
-                                    >
-
-                                        <ul
-                                            class="list-disc
-                                                   space-y-3
-                                                   pl-5
-                                                   text-sm
-                                                   leading-6
-                                                   text-body"
-                                        >
-                                            <li>
-                                                Participants must meet the minimum
-                                                age requirement for their selected category.
-                                            </li>
-
-                                            <li>
-                                                Registration information must match
-                                                the participant's official identification.
-                                            </li>
-
-                                            <li>
-                                                Participants are responsible for ensuring
-                                                they are medically fit to compete.
-                                            </li>
-                                        </ul>
-
-                                    </div>
-
-                                </div>
-
-                            </div>
-
-
-                            {{-- REGISTRATION --}}
-                            <div
-                                class="hs-accordion
-                                       overflow-hidden
-                                       rounded-xl
-                                       border border-line
-                                       bg-white"
-                                id="rules-registration"
-                            >
-
-                                <button
-                                    class="hs-accordion-toggle
-                                           flex w-full
-                                           items-center
-                                           justify-between
-                                           px-6 py-5
-                                           text-left
-                                           font-semibold
-                                           text-heading"
-                                    type="button"
-                                >
-                                    Registration & Ticket
-
-                                    <svg
-                                        class="size-4
-                                               transition-transform
-                                               hs-accordion-active:rotate-180"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        fill="none"
-                                        viewBox="0 0 24 24"
-                                        stroke="currentColor"
-                                    >
-                                        <path
-                                            stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                            stroke-width="2"
-                                            d="m6 9 6 6 6-6"
-                                        />
-                                    </svg>
-
-                                </button>
-
-                                <div
-                                    class="hs-accordion-content
-                                           hidden w-full
-                                           overflow-hidden
-                                           transition-[height]"
-                                >
-
-                                    <div
-                                        class="border-t border-line
-                                               px-6 py-5"
-                                    >
-
-                                        <ul
-                                            class="list-disc
-                                                   space-y-3
-                                                   pl-5
-                                                   text-sm
-                                                   leading-6
-                                                   text-body"
-                                        >
-                                            <li>
-                                                Each registration is valid for one participant.
-                                            </li>
-
-                                            <li>
-                                                Registration fees are subject to the event's
-                                                refund and transfer policy.
-                                            </li>
-
-                                            <li>
-                                                Category and jersey size changes may be
-                                                restricted after registration.
-                                            </li>
-                                        </ul>
-
-                                    </div>
-
-                                </div>
-
-                            </div>
-
-
-                            {{-- RACE DAY --}}
-                            <div
-                                class="hs-accordion
-                                       overflow-hidden
-                                       rounded-xl
-                                       border border-line
-                                       bg-white"
-                                id="rules-race-day"
-                            >
-
-                                <button
-                                    class="hs-accordion-toggle
-                                           flex w-full
-                                           items-center
-                                           justify-between
-                                           px-6 py-5
-                                           text-left
-                                           font-semibold
-                                           text-heading"
-                                    type="button"
-                                >
-                                    Race Day Rules
-
-                                    <svg
-                                        class="size-4
-                                               transition-transform
-                                               hs-accordion-active:rotate-180"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        fill="none"
-                                        viewBox="0 0 24 24"
-                                        stroke="currentColor"
-                                    >
-                                        <path
-                                            stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                            stroke-width="2"
-                                            d="m6 9 6 6 6-6"
-                                        />
-                                    </svg>
-
-                                </button>
-
-                                <div
-                                    class="hs-accordion-content
-                                           hidden w-full
-                                           overflow-hidden
-                                           transition-[height]"
-                                >
-
-                                    <div
-                                        class="border-t border-line
-                                               px-6 py-5"
-                                    >
-
-                                        <p
-                                            class="text-sm
-                                                   leading-7
-                                                   text-body"
-                                        >
-                                            Participants must wear the official BIB
-                                            visibly during the race and comply with
-                                            instructions from race officials, marshals,
-                                            and medical personnel.
-                                        </p>
-
-                                    </div>
-
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
+                <div id="race-panel-size" class="hidden pt-10" role="tabpanel" aria-labelledby="race-tab-size">
+                    <x-public.coming-soon />
                 </div>
-
-
-
-                {{-- =================================================
-                     TAB 4 — SIZE CHART
-                ================================================== --}}
-                <div
-                    id="race-panel-size"
-                    class="hidden pt-10"
-                    role="tabpanel"
-                    aria-labelledby="race-tab-size"
-                >
-
-                    <div class="max-w-4xl">
-
-                        <h2
-                            class="text-[26px]
-                                   font-semibold
-                                   tracking-[-0.03em]
-                                   text-heading"
-                        >
-                            Jersey Size Chart
-                        </h2>
-
-                        <p
-                            class="mt-2
-                                   max-w-2xl
-                                   text-sm
-                                   leading-6
-                                   text-muted"
-                        >
-                            Check your measurements carefully before selecting
-                            your jersey size during registration.
-                        </p>
-
-
-                        <div
-                            class="mt-8
-                                   overflow-hidden
-                                   rounded-2xl
-                                   bg-brand-800
-                                   p-6
-                                   sm:p-8"
-                        >
-
-                            <img
-                                src="{{ asset('assets/images/event/size-chart.png') }}"
-                                alt="Jersey Size Chart"
-                                class="mx-auto
-                                       max-h-[620px]
-                                       w-auto
-                                       max-w-full
-                                       object-contain"
-                            >
-
-                        </div>
-
-                    </div>
-
-                </div>
-
             </div>
-
         </section>
-
     </main>
 
-
     <x-public.footer />
-
 @endsection

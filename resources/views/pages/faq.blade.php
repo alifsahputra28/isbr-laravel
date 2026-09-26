@@ -1,583 +1,103 @@
 @extends('layouts.app')
 
 @section('content')
-
-    {{-- NAVBAR --}}
     <x-public.navbar variant="solid" />
 
-
     <main class="bg-white">
-
-        {{-- =====================================================
-             FAQ CONTENT
-        ====================================================== --}}
         <section class="py-14 sm:py-16 lg:py-20">
-
-            <div
-                class="mx-auto max-w-[1180px]
-                       px-6 sm:px-8
-                       lg:px-10"
-            >
-
-                <div class="mb-10 max-w-[900px]">
-
-                    <p
-                        class="text-[11px]
-                               font-semibold
-                               uppercase
-                               tracking-[0.18em]
-                               text-brand-700"
-                    >
+            <div class="mx-auto max-w-[1180px] px-6 sm:px-8 lg:px-10">
+                <div class="mb-10 max-w-3xl">
+                    <p class="text-[11px] font-semibold uppercase tracking-[0.18em] text-brand-700">
                         Help Center
                     </p>
-
-                    <h1
-                        class="mt-2
-                               text-[36px]
-                               font-semibold
-                               tracking-[-0.04em]
-                               text-heading
-                               sm:text-[42px]"
-                    >
+                    <h1 class="mt-2 text-[36px] font-semibold tracking-[-0.04em] text-heading sm:text-[42px]">
                         Frequently Asked Questions
                     </h1>
-
-                    <p
-                        class="mt-3
-                               max-w-xl
-                               text-[15px]
-                               leading-7
-                               text-body"
-                    >
-                        Temukan jawaban untuk pertanyaan yang paling sering
-                        ditanyakan mengenai registrasi, pembayaran, race pack,
-                        dan race day.
+                    <p class="mt-3 max-w-2xl text-[15px] leading-7 text-body">
+                        Jawaban ringkas berdasarkan Syarat, Ketentuan Pendaftaran &amp; Race Rules Ibnu Sina Batam Run 2027.
                     </p>
-
                 </div>
 
-                <div class="max-w-[900px]">
+                @php
+                    $faqGroups = [
+                        [
+                            'title' => '1. Kategori & Persyaratan',
+                            'items' => [
+                                ['categories', 'Apa saja kategori ISBR 2027?', 'Kategori yang tersedia adalah Fun Run 5K serta Race 10K yang terdiri dari 10K National Men, 10K National Women, 10K Open International Men, 10K Open International Women, 10K National Master 40+ Men, dan 10K National Master 40+ Women.'],
+                                ['fun-run-age', 'Berapa usia minimum Fun Run 5K?', 'Usia minimum Fun Run 5K adalah 13 tahun dan tidak ada batas usia maksimal. Kategori ini bersifat non-competitive dan tidak diperlombakan.'],
+                                ['national', 'Siapa yang dapat mengikuti 10K National?', '10K National terbuka untuk WNI. Kategori Men diperuntukkan bagi pria usia 13–39 tahun dan kategori Women bagi wanita usia 13–39 tahun.'],
+                                ['international', 'Siapa yang dapat mengikuti 10K Open International?', '10K Open International terbuka untuk WNA pria dan wanita berusia minimal 17 tahun tanpa batas usia maksimal. Peserta wajib memiliki paspor atau identitas resmi yang masih berlaku.'],
+                                ['master', 'Siapa yang dapat mengikuti National Master 40+?', '10K National Master 40+ terbuka untuk WNI pria dan wanita berusia 40 tahun ke atas.'],
+                                ['age-calculation', 'Bagaimana usia peserta dihitung?', 'Usia dihitung pada hari pelaksanaan lomba berdasarkan tanggal lahir yang tercantum pada identitas resmi peserta.'],
+                                ['under-seventeen', 'Apakah peserta di bawah 17 tahun diperbolehkan?', 'WNI berusia 13–16 tahun dapat mengikuti 10K National dengan persetujuan orang tua atau wali. Surat Izin Orang Tua/Wali wajib diserahkan pada saat Race Pack Collection atau melalui mekanisme yang ditetapkan panitia.'],
+                            ],
+                        ],
+                        [
+                            'title' => '2. Pendaftaran & Data Peserta',
+                            'items' => [
+                                ['official-registration', 'Kapan peserta dinyatakan resmi terdaftar?', 'Peserta dinyatakan resmi terdaftar setelah data dan pembayaran dinyatakan valid oleh sistem atau panitia.'],
+                                ['identity', 'Apakah boleh memakai identitas orang lain?', 'Tidak. Peserta wajib menggunakan identitas milik sendiri dan dilarang menggunakan identitas orang lain.'],
+                                ['data-change', 'Apakah data dapat diubah?', 'Setelah batas waktu yang ditentukan, perubahan data hanya dapat dilakukan sesuai kebijakan panitia.'],
+                                ['entry-transfer', 'Apakah race entry dapat dialihkan?', 'Pengalihan peserta hanya dapat dilakukan apabila panitia secara resmi membuka mekanisme transfer. Pengalihan tanpa mekanisme resmi dapat menyebabkan diskualifikasi.'],
+                            ],
+                        ],
+                        [
+                            'title' => '3. Race Day, BIB & COT',
+                            'items' => [
+                                ['cot', 'Berapa COT 5K dan 10K?', 'Cut Off Time Fun Run 5K adalah 90 menit atau 1 jam 30 menit. Cut Off Time Race 10K adalah 120 menit atau 2 jam.'],
+                                ['over-cot', 'Apa yang terjadi jika melewati COT?', 'Peserta akan diarahkan oleh marshal atau dapat dijemput menggunakan Bus Sweeper maupun mobil evakuasi. Peserta tetap dapat memperoleh medali apabila menggunakan BIB resmi dan masuk ke area refreshment zone.'],
+                                ['bib-required', 'Apakah BIB wajib?', 'Ya. BIB resmi wajib dipasang di bagian depan dada dan terlihat jelas. Peserta tanpa BIB tidak diperbolehkan melakukan start. NO BIB, NO START, NO MEDAL.'],
+                                ['bib-transfer', 'Apakah BIB boleh dipindahtangankan?', 'Tidak. BIB tidak dapat dipindahtangankan. Penggunaan BIB palsu atau BIB pinjaman merupakan pelanggaran dan dapat menyebabkan diskualifikasi.'],
+                            ],
+                        ],
+                        [
+                            'title' => '4. Race Pack & Medal',
+                            'items' => [
+                                ['rpc', 'Apa ketentuan Race Pack Collection?', 'Race Pack wajib diambil pada waktu dan lokasi yang ditentukan panitia. Peserta wajib menunjukkan identitas yang dipersyaratkan, memeriksa kesesuaian data dan perlengkapan, serta segera melaporkan ketidaksesuaian.'],
+                                ['rpc-representative', 'Apakah RPC dapat diwakilkan?', 'Dapat, hanya sesuai mekanisme dan persyaratan yang ditetapkan oleh panitia.'],
+                                ['medal', 'Siapa yang berhak mendapatkan medal?', 'Peserta yang menggunakan BIB resmi selama perlombaan dan menyelesaikan lomba sesuai ketentuan berhak memperoleh finisher medal. Peserta yang melewati COT tetap dapat memperoleh medali selama menggunakan BIB resmi dan masuk ke area refreshment zone.'],
+                            ],
+                        ],
+                        [
+                            'title' => '5. Podium & Hasil Lomba',
+                            'items' => [
+                                ['winner', 'Bagaimana winner ditentukan?', 'Hasil lomba ditentukan berdasarkan sistem pencatatan waktu, penjurian resmi oleh wasit dari PASI Kota Batam, serta verifikasi Race Committee.'],
+                                ['winner-id', 'Apakah calon winner harus menunjukkan identitas?', 'Ya. Calon pemenang podium wajib membawa identitas resmi yang sesuai dengan data pendaftaran. WNI dapat menggunakan KTP, kartu pelajar, atau identitas resmi lain yang diterima; WNA menggunakan paspor atau dokumen resmi yang diterima panitia.'],
+                                ['winner-attendance', 'Apakah podium winner wajib hadir?', 'Ya. Pemenang wajib hadir secara langsung dan tidak dapat diwakilkan. Ketidakhadiran atau perwakilan dapat menyebabkan diskualifikasi serta hilangnya status juara dan hadiah.'],
+                                ['protest', 'Apakah hasil dapat diprotes?', 'Protes dapat diajukan dalam batas waktu yang ditentukan setelah hasil sementara diumumkan, dengan alasan dan bukti yang jelas. Race Committee akan memproses dan memverifikasi protes, dan keputusannya bersifat final.'],
+                            ],
+                        ],
+                        [
+                            'title' => '6. Safety, Disqualification & Refund',
+                            'items' => [
+                                ['medical', 'Apa fasilitas medis yang tersedia?', 'Dukungan keselamatan meliputi 4 Water Station, 3 unit ambulans, 2 mobil evakuasi, 1 Bus Sweeper, pertolongan pertama di lokasi, serta dukungan Klinik Ibnu Sina dan Puskesmas Kota Batam.'],
+                                ['disqualification', 'Apa penyebab diskualifikasi?', 'Diskualifikasi dapat dikenakan karena tidak menggunakan BIB resmi, memakai BIB palsu atau pinjaman, memotong rute, melewatkan checkpoint, false start, data atau identitas palsu, bantuan pacing yang melanggar fair play, tindakan tidak sportif atau membahayakan, tidak mematuhi petugas, membawa benda berbahaya, atau pelanggaran Race Rules lainnya.'],
+                                ['refund', 'Apakah biaya registrasi refundable?', 'Biaya registrasi pada prinsipnya tidak dapat dikembalikan, kecuali terdapat kebijakan khusus dari panitia. Ketidakhadiran karena alasan pribadi tidak menjadi dasar pengembalian biaya.'],
+                                ['force-majeure', 'Bagaimana force majeure ditangani?', 'Jika terjadi force majeure, penundaan, atau pembatalan acara, mekanisme pengembalian biaya atau pengalihan keikutsertaan akan ditentukan dan diumumkan oleh panitia.'],
+                            ],
+                        ],
+                    ];
+                @endphp
 
-
-                {{-- =================================================
-                     REGISTRATION
-                ================================================== --}}
-                <div>
-
-                    <div class="mb-6">
-
-                        <p
-                            class="text-[11px]
-                                   font-semibold
-                                   uppercase
-                                   tracking-[0.16em]
-                                   text-brand-700"
-                        >
-                            Registration
-                        </p>
-
-                        <h2
-                            class="mt-2
-                                   text-[24px]
-                                   font-semibold
-                                   tracking-[-0.03em]
-                                   text-heading"
-                        >
-                            Pendaftaran
-                        </h2>
-
-                    </div>
-
-
-                    <div class="hs-accordion-group space-y-3">
-
-                        {{-- FAQ 1 --}}
-                        <div
-                            class="hs-accordion
-                                   overflow-hidden
-                                   rounded-xl
-                                   border border-line
-                                   bg-white
-                                   transition
-                                   hover:border-brand-200"
-                            id="faq-registration-1"
-                        >
-
-                            <button
-                                type="button"
-                                class="hs-accordion-toggle
-                                       flex w-full
-                                       items-center
-                                       justify-between
-                                       gap-5
-                                       px-5 py-5
-                                       text-left
-                                       sm:px-6"
-                            >
-
-                                <span
-                                    class="text-[14px]
-                                           font-semibold
-                                           leading-6
-                                           text-heading
-                                           sm:text-[15px]"
-                                >
-                                    Bagaimana cara melakukan pendaftaran?
-                                </span>
-
-
-                                <span
-                                    class="flex size-8
-                                           shrink-0
-                                           items-center
-                                           justify-center
-                                           rounded-full
-                                           bg-brand-50
-                                           text-brand-700"
-                                >
-
-                                    <svg
-                                        class="size-4
-                                               transition-transform
-                                               duration-300
-                                               hs-accordion-active:rotate-45"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        fill="none"
-                                        viewBox="0 0 24 24"
-                                        stroke="currentColor"
-                                        stroke-width="2"
-                                    >
-                                        <path
-                                            stroke-linecap="round"
-                                            d="M12 5v14M5 12h14"
-                                        />
-                                    </svg>
-
-                                </span>
-
-                            </button>
-
-
-                            <div
-                                class="hs-accordion-content
-                                       hidden w-full
-                                       overflow-hidden
-                                       transition-[height]
-                                       duration-300"
-                            >
-
-                                <div
-                                    class="border-t border-line
-                                           px-5 py-5
-                                           sm:px-6"
-                                >
-
-                                    <p
-                                        class="text-[14px]
-                                               leading-7
-                                               text-body"
-                                    >
-                                        Peserta dapat melakukan pendaftaran melalui
-                                        halaman registrasi resmi. Pilih kategori lomba,
-                                        lengkapi data peserta, tentukan ukuran jersey,
-                                        kemudian lanjutkan ke proses pembayaran.
-                                    </p>
-
-                                </div>
-
+                <div class="max-w-[900px] space-y-10">
+                    @foreach ($faqGroups as $groupIndex => $group)
+                        <section>
+                            <h2 class="text-[24px] font-semibold tracking-[-0.03em] text-heading">
+                                {{ $group['title'] }}
+                            </h2>
+                            <div class="hs-accordion-group mt-5 space-y-3" data-hs-accordion-always-open>
+                                @foreach ($group['items'] as [$id, $question, $answer])
+                                    <x-public.faq-item :id="$id" :question="$question">
+                                        {{ $answer }}
+                                    </x-public.faq-item>
+                                @endforeach
                             </div>
-
-                        </div>
-
-
-
-                        {{-- FAQ 2 --}}
-                        <div
-                            class="hs-accordion
-                                   overflow-hidden
-                                   rounded-xl
-                                   border border-line
-                                   bg-white
-                                   transition
-                                   hover:border-brand-200"
-                            id="faq-registration-2"
-                        >
-
-                            <button
-                                type="button"
-                                class="hs-accordion-toggle
-                                       flex w-full
-                                       items-center
-                                       justify-between
-                                       gap-5
-                                       px-5 py-5
-                                       text-left
-                                       sm:px-6"
-                            >
-
-                                <span class="text-[14px] font-semibold leading-6 text-heading sm:text-[15px]">
-                                    Apakah satu email dapat digunakan untuk beberapa peserta?
-                                </span>
-
-                                <span
-                                    class="flex size-8 shrink-0
-                                           items-center justify-center
-                                           rounded-full bg-brand-50
-                                           text-brand-700"
-                                >
-                                    <svg
-                                        class="size-4 transition-transform duration-300
-                                               hs-accordion-active:rotate-45"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        fill="none"
-                                        viewBox="0 0 24 24"
-                                        stroke="currentColor"
-                                        stroke-width="2"
-                                    >
-                                        <path stroke-linecap="round" d="M12 5v14M5 12h14"/>
-                                    </svg>
-                                </span>
-
-                            </button>
-
-                            <div
-                                class="hs-accordion-content hidden
-                                       w-full overflow-hidden
-                                       transition-[height] duration-300"
-                            >
-                                <div class="border-t border-line px-5 py-5 sm:px-6">
-                                    <p class="text-[14px] leading-7 text-body">
-                                        Sebaiknya setiap peserta menggunakan alamat email
-                                        yang aktif dan dapat diakses sendiri karena seluruh
-                                        konfirmasi registrasi dan informasi penting akan
-                                        dikirim melalui email tersebut.
-                                    </p>
-                                </div>
-                            </div>
-
-                        </div>
-
-
-
-                        {{-- FAQ 3 --}}
-                        <div
-                            class="hs-accordion
-                                   overflow-hidden rounded-xl
-                                   border border-line bg-white
-                                   transition hover:border-brand-200"
-                            id="faq-registration-3"
-                        >
-
-                            <button
-                                type="button"
-                                class="hs-accordion-toggle
-                                       flex w-full items-center justify-between
-                                       gap-5 px-5 py-5 text-left sm:px-6"
-                            >
-
-                                <span class="text-[14px] font-semibold leading-6 text-heading sm:text-[15px]">
-                                    Apakah kategori lomba dapat diubah setelah registrasi?
-                                </span>
-
-                                <span
-                                    class="flex size-8 shrink-0
-                                           items-center justify-center
-                                           rounded-full bg-brand-50
-                                           text-brand-700"
-                                >
-                                    <svg
-                                        class="size-4 transition-transform duration-300
-                                               hs-accordion-active:rotate-45"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        fill="none"
-                                        viewBox="0 0 24 24"
-                                        stroke="currentColor"
-                                        stroke-width="2"
-                                    >
-                                        <path stroke-linecap="round" d="M12 5v14M5 12h14"/>
-                                    </svg>
-                                </span>
-
-                            </button>
-
-                            <div
-                                class="hs-accordion-content hidden
-                                       w-full overflow-hidden
-                                       transition-[height] duration-300"
-                            >
-                                <div class="border-t border-line px-5 py-5 sm:px-6">
-                                    <p class="text-[14px] leading-7 text-body">
-                                        Perubahan kategori bergantung pada ketersediaan
-                                        slot dan kebijakan panitia. Setelah periode perubahan
-                                        ditutup, kategori peserta tidak dapat diubah.
-                                    </p>
-                                </div>
-                            </div>
-
-                        </div>
-
-                    </div>
-
+                        </section>
+                    @endforeach
                 </div>
-
-
-
-                {{-- =================================================
-                     PAYMENT
-                ================================================== --}}
-                <div class="mt-14">
-
-                    <div class="mb-6">
-
-                        <p
-                            class="text-[11px]
-                                   font-semibold uppercase
-                                   tracking-[0.16em]
-                                   text-brand-700"
-                        >
-                            Payment
-                        </p>
-
-                        <h2
-                            class="mt-2 text-[24px]
-                                   font-semibold
-                                   tracking-[-0.03em]
-                                   text-heading"
-                        >
-                            Pembayaran
-                        </h2>
-
-                    </div>
-
-
-                    <div class="hs-accordion-group space-y-3">
-
-                        <x-public.faq-item
-                            id="payment-1"
-                            question="Metode pembayaran apa saja yang tersedia?"
-                        >
-                            Sistem pembayaran dapat mendukung beberapa metode seperti
-                            virtual account, transfer bank, QRIS, dan metode lain yang
-                            tersedia pada payment gateway saat checkout.
-                        </x-public.faq-item>
-
-
-                        <x-public.faq-item
-                            id="payment-2"
-                            question="Bagaimana mengetahui pembayaran sudah berhasil?"
-                        >
-                            Setelah pembayaran berhasil diverifikasi, status registrasi
-                            akan berubah menjadi Paid atau Confirmed dan peserta akan
-                            menerima konfirmasi melalui sistem.
-                        </x-public.faq-item>
-
-
-                        <x-public.faq-item
-                            id="payment-3"
-                            question="Apakah biaya registrasi dapat dikembalikan?"
-                        >
-                            Biaya registrasi yang sudah dibayarkan mengikuti kebijakan
-                            refund event. Ketentuan lengkap dapat dilihat pada halaman
-                            Terms & Conditions.
-                        </x-public.faq-item>
-
-                    </div>
-
-                </div>
-
-
-
-                {{-- =================================================
-                     RACE PACK
-                ================================================== --}}
-                <div class="mt-14">
-
-                    <div class="mb-6">
-
-                        <p
-                            class="text-[11px]
-                                   font-semibold uppercase
-                                   tracking-[0.16em]
-                                   text-brand-700"
-                        >
-                            Race Pack
-                        </p>
-
-                        <h2
-                            class="mt-2 text-[24px]
-                                   font-semibold
-                                   tracking-[-0.03em]
-                                   text-heading"
-                        >
-                            Race Pack Collection
-                        </h2>
-
-                    </div>
-
-
-                    <div class="hs-accordion-group space-y-3">
-
-                        <x-public.faq-item
-                            id="race-pack-1"
-                            question="Apa saja yang perlu dibawa saat Race Pack Collection?"
-                        >
-                            Peserta wajib membawa bukti registrasi atau QR Code,
-                            kartu identitas resmi, serta dokumen tambahan jika
-                            pengambilan dilakukan oleh perwakilan.
-                        </x-public.faq-item>
-
-
-                        <x-public.faq-item
-                            id="race-pack-2"
-                            question="Apakah Race Pack dapat diambil oleh orang lain?"
-                        >
-                            Ya, selama memenuhi ketentuan pengambilan oleh perwakilan
-                            dan membawa surat kuasa serta dokumen yang dipersyaratkan.
-                        </x-public.faq-item>
-
-
-                        <x-public.faq-item
-                            id="race-pack-3"
-                            question="Apakah Race Pack dapat diambil pada race day?"
-                        >
-                            Race Pack sebaiknya diambil pada jadwal Race Pack Collection
-                            yang sudah ditentukan. Pengambilan pada race day hanya tersedia
-                            apabila secara resmi diumumkan oleh panitia.
-                        </x-public.faq-item>
-
-                    </div>
-
-                </div>
-
-
-
-                {{-- =================================================
-                     RACE DAY
-                ================================================== --}}
-                <div class="mt-14">
-
-                    <div class="mb-6">
-
-                        <p
-                            class="text-[11px]
-                                   font-semibold uppercase
-                                   tracking-[0.16em]
-                                   text-brand-700"
-                        >
-                            Race Day
-                        </p>
-
-                        <h2
-                            class="mt-2 text-[24px]
-                                   font-semibold
-                                   tracking-[-0.03em]
-                                   text-heading"
-                        >
-                            Hari Perlombaan
-                        </h2>
-
-                    </div>
-
-
-                    <div class="hs-accordion-group space-y-3">
-
-                        <x-public.faq-item
-                            id="race-day-1"
-                            question="Berapa lama sebelum start peserta harus berada di lokasi?"
-                        >
-                            Peserta disarankan sudah berada di race village minimal
-                            60 menit sebelum waktu start kategori masing-masing.
-                        </x-public.faq-item>
-
-
-                        <x-public.faq-item
-                            id="race-day-2"
-                            question="Apa yang terjadi jika peserta melewati Cut Off Time?"
-                        >
-                            Peserta yang melewati Cut Off Time dapat diminta menghentikan
-                            perlombaan demi keselamatan dan kelancaran operasional race.
-                        </x-public.faq-item>
-
-
-                        <x-public.faq-item
-                            id="race-day-3"
-                            question="Apakah tersedia layanan medis selama perlombaan?"
-                        >
-                            Ya. Medical team dan fasilitas pertolongan pertama akan
-                            disiapkan pada titik-titik tertentu sesuai race operation plan.
-                        </x-public.faq-item>
-
-                    </div>
-
-                </div>
-
-
-
-                {{-- =================================================
-                     CONTACT CTA
-                ================================================== --}}
-                <div
-                    class="mt-16
-                           rounded-2xl
-                           bg-brand-800
-                           px-6 py-8
-                           text-white
-                           sm:flex
-                           sm:items-center
-                           sm:justify-between
-                           sm:px-8"
-                >
-
-                    <div>
-
-                        <h2
-                            class="text-[22px]
-                                   font-semibold
-                                   tracking-[-0.03em]"
-                        >
-                            Masih punya pertanyaan?
-                        </h2>
-
-                        <p
-                            class="mt-2
-                                   text-sm leading-6
-                                   text-white/70"
-                        >
-                            Hubungi tim kami untuk informasi lebih lanjut
-                            mengenai event dan registrasi.
-                        </p>
-
-                    </div>
-
-
-                    <a
-                        href="{{ route('contact') }}"
-                        class="mt-6
-                               inline-flex h-11
-                               items-center justify-center
-                               rounded-lg
-                               bg-white
-                               px-5
-                               text-sm font-semibold
-                               text-brand-900
-                               transition
-                               hover:bg-brand-50
-                               sm:mt-0"
-                    >
-                        Contact Us
-                    </a>
-
-                </div>
-
-                </div>
-
             </div>
-
         </section>
-
     </main>
 
-
     <x-public.footer />
-
 @endsection

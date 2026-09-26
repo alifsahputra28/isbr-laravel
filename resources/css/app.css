@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
 
 @import 'tailwindcss';
 @import '../../node_modules/preline/variants.css';
@@ -16,8 +16,8 @@
     /* =========================
        TYPOGRAPHY
     ========================== */
-    --font-sans: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif,
-        'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+    --font-sans: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
+    --font-race: 'Barlow Condensed', ui-sans-serif, system-ui, sans-serif;
 
 
     /* =========================
@@ -134,34 +134,277 @@
 }
 
 @layer base {
-    html {
-        scroll-behavior: smooth;
+    :root {
+        /*
+         * ==================================================
+         * SITE FRAME SETTINGS
+         * ==================================================
+         */
+
+        --site-frame: 2px;
+        --site-radius: 20px;
     }
 
-    body {
-        @apply bg-canvas font-sans text-ink antialiased;
+    /*
+     * Tablet
+     */
+    @media (min-width: 640px) {
+        :root {
+            --site-frame: 2px;
+        }
     }
+
+    /*
+     * Desktop
+     */
+    @media (min-width: 1024px) {
+        :root {
+            --site-frame: 3px;
+        }
+    }
+
+    /*
+     * ==================================================
+     * HTML
+     * ==================================================
+     */
+
+    html {
+        min-height: 100%;
+        scroll-behavior: smooth;
+        background-color: var(--color-brand-600);
+
+        /*
+         * Firefox scrollbar
+         */
+        scrollbar-width: thin;
+        scrollbar-color:
+            rgb(255 255 255 / 0.35)
+            var(--color-brand-600);
+    }
+
+    /*
+     * ==================================================
+     * BODY
+     * ==================================================
+     */
+
+    body {
+        position: relative;
+
+        min-height: 100vh;
+
+        margin: 0;
+
+        padding: var(--site-frame);
+
+        background-color: var(--color-brand-600);
+
+        @apply font-sans text-ink antialiased;
+    }
+
+    /*
+     * ==================================================
+     * FIXED OUTER FRAME
+     * ==================================================
+     *
+     * Membuat frame tetap terlihat ketika halaman di-scroll.
+     */
+
+    body::after {
+        position: fixed;
+
+        inset: 0;
+
+        z-index: 9999;
+
+        border:
+            var(--site-frame)
+            solid
+            var(--color-brand-600);
+
+        border-radius:
+            calc(
+                var(--site-radius) +
+                var(--site-frame)
+            );
+
+        pointer-events: none;
+
+        content: '';
+    }
+
+    /*
+     * ==================================================
+     * BUTTON
+     * ==================================================
+     */
 
     button:not(:disabled),
     [role='button']:not(:disabled) {
         cursor: pointer;
     }
 
+    /*
+     * ==================================================
+     * ACCESSIBILITY / FOCUS
+     * ==================================================
+     */
+
     :focus-visible {
         @apply outline-2 outline-offset-2 outline-brand-600;
     }
+
+    /*
+     * ==================================================
+     * SCROLLBAR
+     * Chrome / Edge / Safari
+     * ==================================================
+     */
+
+    ::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background-color: var(--color-brand-600);
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background-color: rgb(255 255 255 / 0.35);
+
+        border:
+            2px
+            solid
+            var(--color-brand-600);
+
+        border-radius: 999px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        background-color: rgb(255 255 255 / 0.5);
+    }
+
+    ::-webkit-scrollbar-corner {
+        background-color: var(--color-brand-600);
+    }
 }
 
+
+
 @layer components {
+
+    /*
+     * ==================================================
+     * PUBLIC NAVBAR
+     * ==================================================
+     */
+
+    .public-navbar {
+        position: relative;
+
+        z-index: 50;
+
+        border-bottom: 1px solid transparent;
+
+        /*
+         * Navbar mengikuti rounded corner website.
+         */
+        border-top-left-radius: var(--site-radius);
+        border-top-right-radius: var(--site-radius);
+
+        transition:
+            background-color 250ms ease,
+            border-color 250ms ease,
+            box-shadow 250ms ease,
+            backdrop-filter 250ms ease;
+    }
+
+    /*
+     * Navbar solid untuk halaman internal.
+     */
+
+    .public-navbar.is-solid {
+        border-bottom-color:
+            rgb(255 255 255 / 0.1);
+
+        background-color:
+            rgb(11 78 59 / 0.95);
+
+        box-shadow:
+            0 1px 3px
+            rgb(5 44 34 / 0.14);
+
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+    }
+
+    /*
+     * ==================================================
+     * SITE SHELL
+     * ==================================================
+     */
+
+    .site-shell {
+        position: relative;
+
+        width: 100%;
+
+        min-height:
+            calc(
+                100vh -
+                (var(--site-frame) * 2)
+            );
+
+        background-color: #ffffff;
+
+        border-radius: var(--site-radius);
+
+        /*
+         * Hidden biasanya memberikan rendering
+         * rounded corner lebih halus di browser.
+         */
+        overflow: hidden;
+
+        /*
+         * Membantu Chrome / Edge merender
+         * rounded corner lebih smooth.
+         */
+        transform: translateZ(0);
+
+        isolation: isolate;
+    }
+
+
+
+    /*
+     * ==================================================
+     * PARTNERS
+     * ==================================================
+     */
+
     .partner-label {
-        @apply mx-auto text-center text-[9px] font-medium uppercase tracking-[0.15em] text-muted;
+        @apply mx-auto
+            text-center
+            text-[9px]
+            font-medium
+            uppercase
+            tracking-[0.15em]
+            text-muted;
     }
 
     .partner-logo-box {
-        @apply mt-5 flex h-[68px] items-center justify-center;
+        @apply mt-5
+            flex
+            h-[68px]
+            items-center
+            justify-center;
     }
 
     .partner-logo {
-        @apply max-h-[52px] max-w-[140px] object-contain;
+        @apply max-h-[52px]
+            max-w-[140px]
+            object-contain;
     }
 }

@@ -1,421 +1,59 @@
-<section
-    id="prices"
-    class="bg-white py-20 sm:py-24 lg:py-28"
->
-    <div class="mx-auto max-w-[1540px] px-6 sm:px-8 lg:px-10">
-
-        {{-- =========================
-             SECTION HEADER
-        ========================== --}}
-        <div class="text-center">
-
-            <div class="flex items-center justify-center gap-4">
-
-                <span class="h-[2px] w-8 bg-accent-500"></span>
-
-                <p
-                    class="text-[12px]
-                           font-bold
-                           uppercase
-                           tracking-[0.16em]
-                           text-brand-700
-                           sm:text-[13px]"
-                >
-                    Race Category
-                </p>
-
-                <span class="h-[2px] w-8 bg-accent-500"></span>
-
-            </div>
-
-
-            <h2
-                class="mt-5
-                       text-[36px]
-                       font-semibold
-                       leading-tight
-                       tracking-[-0.04em]
-                       text-heading
-                       sm:text-[44px]
-                       lg:text-[52px]"
-            >
-                Kategori Lomba
+<section id="prices" class="bg-white py-16 sm:py-20 lg:py-24">
+    <div class="mx-auto max-w-[1180px] px-6 sm:px-8 lg:px-10">
+        <div class="max-w-3xl">
+            <p class="text-[11px] font-semibold uppercase tracking-[0.18em] text-brand-700">
+                Race Categories
+            </p>
+            <h2 class="mt-2 text-[32px] font-semibold tracking-[-0.04em] text-heading sm:text-[38px]">
+                Pilih Kategori Lomba
             </h2>
-
+            <p class="mt-3 text-[15px] leading-7 text-body">
+                Kategori lomba Ibnu Sina Batam Run 2027 berdasarkan ketentuan resmi peserta.
+            </p>
         </div>
 
-
-
-        {{-- =========================
-             CATEGORY GRID
-        ========================== --}}
-        <div
-            class="mt-14
-                   grid
-                   grid-cols-1
-                   gap-5
-                   md:grid-cols-2
-                   xl:grid-cols-4"
-        >
-
-            {{-- =========================
-                 MARATHON
-            ========================== --}}
-            <article
-                class="flex min-h-[430px]
-                       flex-col
-                       rounded-xl
-                       border border-line
-                       bg-white
-                       p-7
-                       transition
-                       hover:border-brand-300"
-            >
-
-                <h3
-                    class="text-[20px]
-                           font-bold
-                           tracking-[-0.02em]
-                           text-brand-700"
-                >
-                    Marathon
+        <div class="mt-10 grid gap-5 lg:grid-cols-2">
+            <article class="rounded-2xl border border-line bg-white p-6 transition hover:border-brand-300 sm:p-8">
+                <p class="text-[11px] font-semibold uppercase tracking-[0.18em] text-brand-700">
+                    Non-competitive
+                </p>
+                <h3 class="mt-3 font-race text-[38px] font-bold leading-none text-heading">
+                    Fun Run 5K
                 </h3>
-
-                <div class="my-5 border-t border-line"></div>
-
-
-                {{-- OPEN --}}
-                <div class="py-3">
-
-                    <p
-                        class="text-[15px]
-                               font-semibold
-                               text-heading"
-                    >
-                        Marathon Open
-                    </p>
-
-                    <p
-                        class="mt-1
-                               text-[22px]
-                               font-bold
-                               tracking-[-0.03em]
-                               text-brand-700"
-                    >
-                        Rp 1.200.000
-                    </p>
-
-                    <p
-                        class="mt-3
-                               text-[14px]
-                               leading-6
-                               text-muted"
-                    >
-                        BIB Number, Jersey, Medal Finisher,
-                        Finisher Tee
-                    </p>
-
-                </div>
-
-
-                <div class="my-1 border-t border-line"></div>
-
-
-                {{-- CLOSED --}}
-                <div class="py-4">
-
-                    <p
-                        class="text-[15px]
-                               font-semibold
-                               text-heading"
-                    >
-                        Marathon Closed
-                    </p>
-
-                    <p
-                        class="mt-1
-                               text-[22px]
-                               font-bold
-                               tracking-[-0.03em]
-                               text-brand-700"
-                    >
-                        Rp 1.000.000
-                    </p>
-
-                    <p
-                        class="mt-3
-                               text-[14px]
-                               leading-6
-                               text-muted"
-                    >
-                        BIB Number, Jersey, Medal Finisher,
-                        Finisher Tee
-                    </p>
-
-                </div>
-
+                <ul class="mt-6 space-y-3 text-[14px] leading-6 text-body">
+                    <li class="flex gap-3"><span class="mt-2 size-1.5 shrink-0 rounded-full bg-brand-600"></span>Usia minimal 13 tahun.</li>
+                    <li class="flex gap-3"><span class="mt-2 size-1.5 shrink-0 rounded-full bg-brand-600"></span>Tidak ada batas usia maksimal.</li>
+                    <li class="flex gap-3"><span class="mt-2 size-1.5 shrink-0 rounded-full bg-brand-600"></span>Wajib mengikuti ketentuan keselamatan dan Race Rules.</li>
+                </ul>
             </article>
 
-
-
-            {{-- =========================
-                 HALF MARATHON
-            ========================== --}}
-            <article
-                class="flex min-h-[430px]
-                       flex-col
-                       rounded-xl
-                       border border-line
-                       bg-white
-                       p-7
-                       transition
-                       hover:border-brand-300"
-            >
-
-                <h3
-                    class="text-[20px]
-                           font-bold
-                           tracking-[-0.02em]
-                           text-brand-700"
-                >
-                    Half Marathon
+            <article class="rounded-2xl border border-line bg-white p-6 transition hover:border-brand-300 sm:p-8">
+                <p class="text-[11px] font-semibold uppercase tracking-[0.18em] text-brand-700">
+                    Competitive
+                </p>
+                <h3 class="mt-3 font-race text-[38px] font-bold leading-none text-heading">
+                    Race 10K
                 </h3>
-
-                <div class="my-5 border-t border-line"></div>
-
-
-                {{-- OPEN --}}
-                <div class="py-3">
-
-                    <p
-                        class="text-[15px]
-                               font-semibold
-                               text-heading"
-                    >
-                        Half Marathon Open
-                    </p>
-
-                    <p
-                        class="mt-1
-                               text-[22px]
-                               font-bold
-                               tracking-[-0.03em]
-                               text-brand-700"
-                    >
-                        Rp 900.000
-                    </p>
-
-                    <p
-                        class="mt-3
-                               text-[14px]
-                               leading-6
-                               text-muted"
-                    >
-                        BIB Number, Jersey, Medal Finisher,
-                        Finisher Tee
-                    </p>
-
+                <div class="mt-6 grid gap-3 sm:grid-cols-2">
+                    @foreach ([
+                        ['10K National Men', 'WNI · Pria · 13–39 tahun'],
+                        ['10K National Women', 'WNI · Wanita · 13–39 tahun'],
+                        ['10K Open International Men', 'WNA · Pria · 17+'],
+                        ['10K Open International Women', 'WNA · Wanita · 17+'],
+                        ['10K National Master 40+ Men', 'WNI · Pria · 40+'],
+                        ['10K National Master 40+ Women', 'WNI · Wanita · 40+'],
+                    ] as [$name, $requirements])
+                        <div class="rounded-xl bg-surface-soft p-4">
+                            <p class="font-race text-xl font-semibold leading-tight text-heading">{{ $name }}</p>
+                            <p class="mt-2 text-xs leading-5 text-muted">{{ $requirements }}</p>
+                        </div>
+                    @endforeach
                 </div>
-
-
-                <div class="my-1 border-t border-line"></div>
-
-
-                {{-- CLOSED --}}
-                <div class="py-4">
-
-                    <p
-                        class="text-[15px]
-                               font-semibold
-                               text-heading"
-                    >
-                        Half Marathon Closed
-                    </p>
-
-                    <p
-                        class="mt-1
-                               text-[22px]
-                               font-bold
-                               tracking-[-0.03em]
-                               text-brand-700"
-                    >
-                        Rp 800.000
-                    </p>
-
-                    <p
-                        class="mt-3
-                               text-[14px]
-                               leading-6
-                               text-muted"
-                    >
-                        BIB Number, Jersey, Medal Finisher,
-                        Finisher Tee
-                    </p>
-
-                </div>
-
             </article>
-
-
-
-            {{-- =========================
-                 10K
-            ========================== --}}
-            <article
-                class="flex min-h-[430px]
-                       flex-col
-                       rounded-xl
-                       border border-line
-                       bg-white
-                       p-7
-                       transition
-                       hover:border-brand-300"
-            >
-
-                <h3
-                    class="text-[20px]
-                           font-bold
-                           tracking-[-0.02em]
-                           text-brand-700"
-                >
-                    10K
-                </h3>
-
-                <div class="my-5 border-t border-line"></div>
-
-
-                {{-- OPEN --}}
-                <div class="py-3">
-
-                    <p
-                        class="text-[15px]
-                               font-semibold
-                               text-heading"
-                    >
-                        10K Open
-                    </p>
-
-                    <p
-                        class="mt-1
-                               text-[22px]
-                               font-bold
-                               tracking-[-0.03em]
-                               text-brand-700"
-                    >
-                        Rp 800.000
-                    </p>
-
-                    <p
-                        class="mt-3
-                               text-[14px]
-                               leading-6
-                               text-muted"
-                    >
-                        BIB Number, Jersey, Medal Finisher
-                    </p>
-
-                </div>
-
-
-                <div class="my-1 border-t border-line"></div>
-
-
-                {{-- CLOSED --}}
-                <div class="py-4">
-
-                    <p
-                        class="text-[15px]
-                               font-semibold
-                               text-heading"
-                    >
-                        10K Closed
-                    </p>
-
-                    <p
-                        class="mt-1
-                               text-[22px]
-                               font-bold
-                               tracking-[-0.03em]
-                               text-brand-700"
-                    >
-                        Rp 650.000
-                    </p>
-
-                    <p
-                        class="mt-3
-                               text-[14px]
-                               leading-6
-                               text-muted"
-                    >
-                        BIB Number, Jersey, Medal Finisher
-                    </p>
-
-                </div>
-
-            </article>
-
-
-
-            {{-- =========================
-                 5K FUN RUN
-            ========================== --}}
-            <article
-                class="flex min-h-[430px]
-                       flex-col
-                       rounded-xl
-                       border border-line
-                       bg-white
-                       p-7
-                       transition
-                       hover:border-brand-300"
-            >
-
-                <h3
-                    class="text-[20px]
-                           font-bold
-                           tracking-[-0.02em]
-                           text-brand-700"
-                >
-                    5K Fun Run
-                </h3>
-
-                <div class="my-5 border-t border-line"></div>
-
-
-                <div class="py-3">
-
-                    <p
-                        class="text-[15px]
-                               font-semibold
-                               text-heading"
-                    >
-                        5K Fun Run
-                    </p>
-
-                    <p
-                        class="mt-1
-                               text-[22px]
-                               font-bold
-                               tracking-[-0.03em]
-                               text-brand-700"
-                    >
-                        Rp 450.000
-                    </p>
-
-                    <p
-                        class="mt-3
-                               text-[14px]
-                               leading-6
-                               text-muted"
-                    >
-                        BIB Number, Jersey, Medal Finisher
-                    </p>
-
-                </div>
-
-            </article>
-
         </div>
 
+        <p class="mt-5 text-[13px] leading-6 text-muted">
+            Usia peserta dihitung pada hari pelaksanaan lomba berdasarkan tanggal lahir pada identitas resmi.
+        </p>
     </div>
 </section>

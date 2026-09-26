@@ -20,8 +20,8 @@
 
             {{-- BACKGROUND IMAGE --}}
             <img
-                src="{{ asset('assets/images/contact/contact-hero.jpg') }}"
-                alt="Contact Batam Run"
+                src="{{ asset('assets/images/event/contact.webp') }}"
+                alt="Contact Ibnu Sina Batam Run 2027"
                 class="absolute inset-0
                        h-full w-full
                        object-cover
@@ -262,13 +262,7 @@
 
 
                     {{-- FORM --}}
-                    <form
-                        action="#"
-                        method="POST"
-                        class="space-y-5"
-                    >
-
-                        @csrf
+                    <form class="space-y-5">
 
 
                         {{-- FULL NAME --}}
@@ -468,7 +462,7 @@
 
                         {{-- SUBMIT --}}
                         <button
-                            type="submit"
+                            type="button"
                             class="inline-flex h-[52px]
                                    w-full
                                    items-center
@@ -531,16 +525,7 @@
                             Email
                         </p>
 
-                        <a
-                            href="mailto:hello@batamrun.com"
-                            class="mt-3 block
-                                   text-lg font-semibold
-                                   text-heading
-                                   transition
-                                   hover:text-brand-700"
-                        >
-                            hello@batamrun.com
-                        </a>
+                        <p class="mt-3 text-lg font-semibold text-heading">-</p>
 
                     </div>
 
@@ -558,16 +543,7 @@
                             Instagram
                         </p>
 
-                        <a
-                            href="#"
-                            class="mt-3 block
-                                   text-lg font-semibold
-                                   text-heading
-                                   transition
-                                   hover:text-brand-700"
-                        >
-                            @batamrun
-                        </a>
+                        <p class="mt-3 text-lg font-semibold text-heading">-</p>
 
                     </div>
 
@@ -585,17 +561,7 @@
                             Location
                         </p>
 
-                        <address
-                            class="mt-3
-                                   not-italic
-                                   text-[15px]
-                                   leading-7
-                                   text-body"
-                        >
-                            Batam, Kepulauan Riau
-                            <br>
-                            Indonesia
-                        </address>
+                        <p class="mt-3 text-lg font-semibold text-heading">-</p>
 
                     </div>
 

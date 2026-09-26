@@ -3,7 +3,7 @@
 >
     {{-- BACKGROUND --}}
     <img
-        src="{{ asset('assets/images/event/tagline.jpg') }}"
+        src="{{ asset('assets/images/event/tagline.webp') }}"
         alt="Race participants"
         class="absolute inset-0 h-full w-full object-cover object-center"
     >
@@ -33,7 +33,8 @@
         <div class="mx-auto max-w-[1000px] text-center">
 
             <h2
-                class="text-[48px]
+                class="font-race
+                       text-[48px]
                        font-semibold
                        uppercase
                        leading-[0.92]
@@ -43,13 +44,7 @@
                        md:text-[76px]
                        lg:text-[90px]"
             >
-                #Run
-                <span class="text-[0.72em]">
-                    and
-                </span>
-                <br>
-
-                Discover
+                #HealForWinning
             </h2>
 
         </div>

@@ -32,8 +32,8 @@
                         >
 
                             <img
-                                src="{{ asset('assets/images/about/about.jpg') }}"
-                                alt="About Batam Run"
+                                src="{{ asset('assets/images/event/tagline.webp') }}"
+                                alt="About Ibnu Sina Batam Run 2027"
                                 class="aspect-[4/3]
                                        h-full w-full
                                        object-cover
@@ -73,7 +73,7 @@
                         >
 
                             <p>
-                                Batam Run menghadirkan pengalaman lari yang
+                                Ibnu Sina Batam Run 2027 menghadirkan pengalaman lari yang
                                 mempertemukan pelari, komunitas, dan semangat
                                 kota dalam satu momentum race day.
                             </p>
@@ -87,7 +87,7 @@
 
                             <p>
                                 Melalui penyelenggaraan yang terstruktur dan
-                                pengalaman peserta yang nyaman, Batam Run
+                                pengalaman peserta yang nyaman, ISBR
                                 ingin menjadi ruang bagi para pelari untuk
                                 bergerak, bertemu, dan menikmati perjalanan
                                 mereka bersama komunitas.

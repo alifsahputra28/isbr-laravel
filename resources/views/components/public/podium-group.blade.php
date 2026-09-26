@@ -58,7 +58,7 @@
                        items-center justify-center
                        rounded-full
                        bg-surface-muted
-                       text-lg font-bold
+                       font-race text-lg font-bold
                        text-heading"
             >
                 2
@@ -76,6 +76,7 @@
 
             <p
                 class="mt-3
+                       font-race
                        text-[24px]
                        font-semibold
                        tracking-[-0.03em]
@@ -120,7 +121,7 @@
                            items-center justify-center
                            rounded-full
                            bg-accent-500
-                           text-xl font-bold
+                           font-race text-xl font-bold
                            text-on-accent"
                 >
                     1
@@ -139,6 +140,7 @@
 
                 <p
                     class="mt-3
+                           font-race
                            text-[32px]
                            font-semibold
                            tracking-[-0.04em]
@@ -185,7 +187,7 @@
                        items-center justify-center
                        rounded-full
                        bg-surface-muted
-                       text-lg font-bold
+                       font-race text-lg font-bold
                        text-heading"
             >
                 3
@@ -203,6 +205,7 @@
 
             <p
                 class="mt-3
+                       font-race
                        text-[24px]
                        font-semibold
                        tracking-[-0.03em]

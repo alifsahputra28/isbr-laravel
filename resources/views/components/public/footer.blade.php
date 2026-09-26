@@ -216,7 +216,7 @@
                                transition-colors
                                hover:text-white"
                     >
-                        Rates & Registration
+                        Prices
                     </a>
 
                 </nav>
@@ -279,7 +279,7 @@
                     </a>
 
                     <a
-                        href="{{ route('home') }}#route"
+                        href="{{ route('route') }}"
                         class="w-fit
                                text-[14px]
                                text-white/90
@@ -309,113 +309,26 @@
 
 
                 <div class="mt-6 space-y-4">
-
-                    {{-- INSTAGRAM --}}
-                    <a
-                        href="#"
-                        class="group flex
-                               w-fit
-                               items-center gap-3
-                               text-[14px]
-                               text-white/90
-                               transition-colors
-                               hover:text-white"
-                    >
-
-                        <span
-                            class="flex size-7
-                                   items-center justify-center
-                                   rounded-full
-                                   bg-white text-brand-900"
-                        >
-                            <svg
-                                class="size-4"
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                xmlns="http://www.w3.org/2000/svg"
-                                aria-hidden="true"
-                            >
-                                <rect
-                                    x="3"
-                                    y="3"
-                                    width="18"
-                                    height="18"
-                                    rx="5"
-                                    stroke="currentColor"
-                                    stroke-width="2"
-                                />
-
-                                <circle
-                                    cx="12"
-                                    cy="12"
-                                    r="4"
-                                    stroke="currentColor"
-                                    stroke-width="2"
-                                />
-
-                                <circle
-                                    cx="17.5"
-                                    cy="6.5"
-                                    r="1"
-                                    fill="currentColor"
-                                />
+                    <div class="flex w-fit items-center gap-3 text-[14px] text-white/90">
+                        <span class="flex size-7 items-center justify-center rounded-full bg-white text-brand-900">
+                            <svg class="size-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                <rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="2" />
+                                <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2" />
+                                <circle cx="17.5" cy="6.5" r="1" fill="currentColor" />
                             </svg>
                         </span>
+                        <span>-</span>
+                    </div>
 
-                        <span>
-                            @batamrun
-                        </span>
-
-                    </a>
-
-
-                    {{-- EMAIL --}}
-                    <a
-                        href="mailto:hello@batamrun.com"
-                        class="group flex
-                               w-fit
-                               items-center gap-3
-                               text-[14px]
-                               text-white/90
-                               transition-colors
-                               hover:text-white"
-                    >
-
-                        <span
-                            class="flex size-7
-                                   items-center justify-center
-                                   rounded-full
-                                   bg-white text-brand-900"
-                        >
-                            <svg
-                                class="size-4"
-                                xmlns="http://www.w3.org/2000/svg"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                stroke="currentColor"
-                                stroke-width="2"
-                                aria-hidden="true"
-                            >
-                                <path
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    d="M3 6.75A2.75 2.75 0 0 1 5.75 4h12.5A2.75 2.75 0 0 1 21 6.75v10.5A2.75 2.75 0 0 1 18.25 20H5.75A2.75 2.75 0 0 1 3 17.25V6.75Z"
-                                />
-
-                                <path
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    d="m4 7 8 6 8-6"
-                                />
+                    <div class="flex w-fit items-center gap-3 text-[14px] text-white/90">
+                        <span class="flex size-7 items-center justify-center rounded-full bg-white text-brand-900">
+                            <svg class="size-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M3 6.75A2.75 2.75 0 0 1 5.75 4h12.5A2.75 2.75 0 0 1 21 6.75v10.5A2.75 2.75 0 0 1 18.25 20H5.75A2.75 2.75 0 0 1 3 17.25V6.75Z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" d="m4 7 8 6 8-6" />
                             </svg>
                         </span>
-
-                        <span>
-                            hello@batamrun.com
-                        </span>
-
-                    </a>
-
+                        <span>-</span>
+                    </div>
                 </div>
 
             </div>
@@ -431,12 +344,12 @@
 
                 <a
                     href="{{ route('home') }}"
-                    aria-label="Batam Run"
+                    aria-label="Ibnu Sina Batam Run 2027"
                 >
 
                     <img
-                        src="{{ asset('assets/images/logo/event-logo-white.png') }}"
-                        alt="Batam Run"
+                        src="{{ asset('assets/images/logo/logo_ibsirun_2026_white.webp') }}"
+                        alt="Ibnu Sina Batam Run 2027"
                         class="h-auto
                                w-[180px]
                                object-contain
@@ -472,7 +385,7 @@
                        font-semibold
                        text-white"
             >
-                © {{ date('Y') }} Batam Run. All Rights Reserved.
+                © {{ date('Y') }} Ibnu Sina Batam Run. All Rights Reserved.
             </p>
 
         </div>

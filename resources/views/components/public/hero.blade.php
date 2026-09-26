@@ -11,8 +11,8 @@
 
         {{-- BACKGROUND IMAGE --}}
         <img
-            src="{{ asset('assets/images/event/hero.jpg') }}"
-            alt="Batam Run"
+            src="{{ asset('assets/images/event/hero.webp') }}"
+            alt="Ibnu Sina Batam Run 2027"
             class="absolute inset-0
                    h-full w-full
                    object-cover
@@ -87,6 +87,7 @@
                     {{-- SMALL LABEL --}}
                     <p
                         class="mb-4
+                               font-race
                                text-[10px]
                                font-semibold
                                uppercase
@@ -94,13 +95,14 @@
                                text-white/80
                                sm:text-[11px]"
                     >
-                        28 June 2026 | Batam, Indonesia
+                        -
                     </p>
 
 
                     {{-- MAIN HEADLINE --}}
                     <h1
                         class="max-w-[670px]
+                               font-race
                                text-[47px]
                                font-semibold
                                leading-[0.90]
@@ -114,7 +116,7 @@
                         IBNU SINA
                         <br>
 
-                        BATAM RUN 2026
+                        BATAM RUN 2027
                     </h1>
 
 
@@ -128,8 +130,8 @@
                                sm:text-[15px]
                                sm:leading-7"
                     >
-                        Race registration, participant management, and event
-                        operations — built for runners, organizers, and race day teams.
+                        Discover race information, categories, and official updates
+                        to help you prepare for race day.
                     </p>
 
 
@@ -141,7 +143,7 @@
                     >
 
                         <a
-                            href="{{ route('register') }}"
+                            href="{{ route('race-info') }}"
                             class="inline-flex
                                    h-[50px]
                                    items-center justify-center
@@ -153,7 +155,7 @@
                                    transition
                                    hover:bg-surface-soft"
                         >
-                            Register Now
+                            Race Information
                         </a>
 
 

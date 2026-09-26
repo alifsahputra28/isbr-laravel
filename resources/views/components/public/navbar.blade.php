@@ -4,7 +4,7 @@
     $eventActive = request()->routeIs('race-info', 'race-pack', 'prices', 'podium-prize', 'faq', 'terms');
 @endphp
 
-<header class="{{ $variant === 'solid' ? 'relative bg-brand-800' : 'absolute inset-x-0 top-0' }} z-50">
+<header class="public-navbar {{ $variant === 'solid' ? 'is-solid' : 'is-overlay' }}">
 
     <div
         class="relative mx-auto flex h-[92px]
@@ -192,11 +192,12 @@
 
             {{-- ROUTE --}}
             <a
-                href="{{ route('home') }}#route"
+                href="{{ route('route') }}"
                 class="text-[14px] font-medium
                        text-white/90
                        transition-colors duration-200
-                       hover:text-white"
+                       hover:text-white
+                       {{ request()->routeIs('route') ? 'text-white underline underline-offset-8' : '' }}"
             >
                 Route
             </a>
@@ -230,7 +231,7 @@
             aria-label="Home"
         >
             <img
-                src="{{ asset('assets/images/logo/logo_ibsirun_2026_white.png') }}"
+                src="{{ asset('assets/images/logo/logo_ibsirun_2026_white.webp') }}"
                 alt="Event Logo"
                 class="h-10 w-auto
                        object-contain
@@ -248,27 +249,6 @@
             class="ml-auto flex flex-1
                    items-center justify-end"
         >
-
-            {{-- DESKTOP LOGIN --}}
-            <a
-                href="{{ route('login') }}"
-                class="hidden h-11
-                       items-center justify-center
-                       rounded-full
-                       border border-white/35
-                       bg-white/5
-                       px-6
-                       text-sm font-medium
-                       text-white
-                       backdrop-blur-sm
-                       transition
-                       hover:bg-white
-                       hover:text-brand-900
-                       lg:inline-flex"
-            >
-                Login
-            </a>
-
 
             {{-- MOBILE MENU BUTTON --}}
             <button
@@ -513,13 +493,14 @@
 
 
             <a
-                href="{{ route('home') }}#route"
+                href="{{ route('route') }}"
                 class="block rounded-xl
                        px-4 py-3
                        text-sm font-medium
                        text-white
                        transition
-                       hover:bg-white/10"
+                       hover:bg-white/10
+                       {{ request()->routeIs('route') ? 'bg-white/10' : '' }}"
             >
                 Route
             </a>
@@ -538,24 +519,6 @@
                 Contact Us
             </a>
 
-
-            {{-- MOBILE LOGIN --}}
-            <div class="mt-2 border-t border-white/10 pt-2">
-
-                <a
-                    href="{{ route('login') }}"
-                    class="inline-flex h-11
-                           w-full
-                           items-center justify-center
-                           rounded-xl
-                           bg-white
-                           text-sm font-semibold
-                           text-brand-900"
-                >
-                    Login
-                </a>
-
-            </div>
 
         </div>
 

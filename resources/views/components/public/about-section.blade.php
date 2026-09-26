@@ -56,7 +56,7 @@
                 </p>
 
 
-                {{-- VIDEO --}}
+                {{-- RACE VISUAL --}}
                 <div class="mt-7">
 
                     <div
@@ -65,14 +65,12 @@
                                overflow-hidden
                                bg-surface-soft"
                     >
-                        <iframe
-                            class="h-full w-full"
-                            src="https://www.youtube.com/embed/YOUR_VIDEO_ID"
-                            title="Batam Run Official Video"
+                        <img
+                            src="{{ asset('assets/images/event/tagline.webp') }}"
+                            alt="Ibnu Sina Batam Run 2027 runners"
+                            class="h-full w-full object-cover object-center"
                             loading="lazy"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            allowfullscreen
-                        ></iframe>
+                        >
                     </div>
 
                 </div>

@@ -10,11 +10,11 @@
 
     <meta
         name="description"
-        content="Official race registration website."
+        content="Official website for Ibnu Sina Batam Run 2027."
     >
 
     <title>
-        {{ $title ?? 'Batam Run' }}
+        {{ $title ?? 'Ibnu Sina Batam Run 2027' }}
     </title>
 
     @vite([
@@ -23,9 +23,11 @@
     ])
 </head>
 
-<body class="bg-canvas text-ink antialiased">
+<body>
 
-    @yield('content')
+    <div class="site-shell">
+        @yield('content')
+    </div>
 
 </body>
 </html>
