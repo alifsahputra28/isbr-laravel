@@ -302,9 +302,13 @@
      */
 
     .public-navbar {
-        position: relative;
+        position: fixed;
 
-        z-index: 50;
+        top: var(--site-frame);
+        right: var(--site-frame);
+        left: var(--site-frame);
+
+        z-index: 1000;
 
         border-bottom: 1px solid transparent;
 
@@ -340,6 +344,30 @@
         -webkit-backdrop-filter: blur(10px);
     }
 
+    .public-navbar.is-overlay.is-scrolled {
+        border-bottom-color:
+            rgb(255 255 255 / 0.1);
+
+        background-color:
+            rgb(11 78 59 / 0.95);
+
+        box-shadow:
+            0 1px 3px
+            rgb(5 44 34 / 0.14);
+
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+    }
+
+    .public-navbar-offset {
+        height: 92px;
+    }
+
+    .public-navbar :focus-visible,
+    footer :focus-visible {
+        outline-color: var(--color-on-brand);
+    }
+
     /*
      * ==================================================
      * SITE SHELL
@@ -367,44 +395,6 @@
          */
         overflow: hidden;
 
-        /*
-         * Membantu Chrome / Edge merender
-         * rounded corner lebih smooth.
-         */
-        transform: translateZ(0);
-
         isolation: isolate;
-    }
-
-
-
-    /*
-     * ==================================================
-     * PARTNERS
-     * ==================================================
-     */
-
-    .partner-label {
-        @apply mx-auto
-            text-center
-            text-[9px]
-            font-medium
-            uppercase
-            tracking-[0.15em]
-            text-muted;
-    }
-
-    .partner-logo-box {
-        @apply mt-5
-            flex
-            h-[68px]
-            items-center
-            justify-center;
-    }
-
-    .partner-logo {
-        @apply max-h-[52px]
-            max-w-[140px]
-            object-contain;
     }
 }

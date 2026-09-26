@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('seo_title', 'FAQ | Ibnu Sina Batam Run 2027')
+@section('seo_description', 'Temukan jawaban resmi tentang kategori, persyaratan peserta, pendaftaran, BIB, Cut Off Time, race pack, medali, podium, dan keselamatan ISBR 2027.')
+@section('seo_canonical', route('faq'))
+
 @section('content')
     <x-public.navbar variant="solid" />
 

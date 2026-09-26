@@ -68,8 +68,11 @@
                         <img
                             src="{{ asset('assets/images/event/tagline.webp') }}"
                             alt="Ibnu Sina Batam Run 2027 runners"
+                            width="1536"
+                            height="1024"
                             class="h-full w-full object-cover object-center"
                             loading="lazy"
+                            decoding="async"
                         >
                     </div>
 

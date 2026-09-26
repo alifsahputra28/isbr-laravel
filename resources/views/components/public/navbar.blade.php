@@ -4,7 +4,11 @@
     $eventActive = request()->routeIs('race-info', 'race-pack', 'prices', 'podium-prize', 'faq', 'terms');
 @endphp
 
-<header class="public-navbar {{ $variant === 'solid' ? 'is-solid' : 'is-overlay' }}">
+<header
+    class="public-navbar {{ $variant === 'solid' ? 'is-solid' : 'is-overlay' }}"
+    data-public-navbar
+    data-navbar-variant="{{ $variant }}"
+>
 
     <div
         class="relative mx-auto flex h-[92px]
@@ -66,6 +70,7 @@
                     Event
 
                     <svg
+                        aria-hidden="true"
                         class="size-4
                                transition-transform duration-200
                                hs-dropdown-open:rotate-180"
@@ -232,7 +237,11 @@
         >
             <img
                 src="{{ asset('assets/images/logo/logo_ibsirun_2026_white.webp') }}"
-                alt="Event Logo"
+                alt="Ibnu Sina Batam Run 2027"
+                width="1384"
+                height="460"
+                loading="eager"
+                decoding="async"
                 class="h-10 w-auto
                        object-contain
                        sm:h-11
@@ -273,6 +282,7 @@
 
                 {{-- Hamburger --}}
                 <svg
+                    aria-hidden="true"
                     class="size-5 hs-collapse-open:hidden"
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
@@ -290,6 +300,7 @@
 
                 {{-- Close --}}
                 <svg
+                    aria-hidden="true"
                     class="hidden size-5 hs-collapse-open:block"
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
@@ -370,6 +381,7 @@
 
                 <button
                     type="button"
+                    id="mobile-event-toggle"
                     class="hs-accordion-toggle
                            flex w-full
                            items-center justify-between
@@ -381,10 +393,13 @@
                            transition
                            hover:bg-white/10
                            {{ $eventActive ? 'bg-white/10' : '' }}"
+                    aria-expanded="false"
+                    aria-controls="mobile-event-menu"
                 >
                     Event
 
                     <svg
+                        aria-hidden="true"
                         class="size-4
                                transition-transform duration-200
                                hs-accordion-active:rotate-180"
@@ -404,11 +419,13 @@
 
 
                 <div
+                    id="mobile-event-menu"
                     class="hs-accordion-content
                            hidden w-full
                            overflow-hidden
                            transition-[height]
                            duration-300"
+                    aria-labelledby="mobile-event-toggle"
                 >
 
                     <div class="pb-2 pl-3">
@@ -525,3 +542,7 @@
     </div>
 
 </header>
+
+@if ($variant === 'solid')
+    <div class="public-navbar-offset" aria-hidden="true"></div>
+@endif

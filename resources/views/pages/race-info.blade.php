@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('seo_title', 'Race Info | Ibnu Sina Batam Run 2027')
+@section('seo_description', 'Pelajari kategori lomba, persyaratan peserta, Cut Off Time, ketentuan BIB, medali, dan dukungan keselamatan Ibnu Sina Batam Run 2027 untuk race day.')
+@section('seo_canonical', route('race-info'))
+
 @section('content')
     <x-public.navbar variant="solid" />
 

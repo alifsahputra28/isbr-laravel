@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('seo_title', 'Podium Prize | Ibnu Sina Batam Run 2027')
+@section('seo_description', 'Informasi kategori podium, hadiah, verifikasi identitas, kehadiran pemenang, dan penetapan hasil Ibnu Sina Batam Run 2027 sesuai ketentuan resmi lomba.')
+@section('seo_canonical', route('podium-prize'))
+
 @section('content')
     <x-public.navbar variant="solid" />
 

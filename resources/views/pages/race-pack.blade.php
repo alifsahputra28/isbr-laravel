@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('seo_title', 'Race Pack Collection | Ibnu Sina Batam Run 2027')
+@section('seo_description', 'Informasi Race Pack Collection Ibnu Sina Batam Run 2027, termasuk ketentuan pengambilan, verifikasi identitas, perwakilan, dan pemeriksaan perlengkapan.')
+@section('seo_canonical', route('race-pack'))
+
 @section('content')
     <x-public.navbar variant="solid" />
 

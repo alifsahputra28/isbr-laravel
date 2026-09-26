@@ -37,3 +37,22 @@ Route::view('/terms', 'pages.terms')
 
 Route::view('/contact', 'pages.contact')
     ->name('contact');
+
+Route::get('/sitemap.xml', function () {
+    $publicRoutes = [
+        'home',
+        'about',
+        'race-info',
+        'race-pack',
+        'prices',
+        'podium-prize',
+        'faq',
+        'terms',
+        'contact',
+        'route',
+    ];
+
+    return response()
+        ->view('sitemap', ['urls' => collect($publicRoutes)->map(fn (string $name) => route($name))])
+        ->header('Content-Type', 'application/xml');
+})->name('sitemap');

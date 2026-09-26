@@ -13,6 +13,11 @@
         <img
             src="{{ asset('assets/images/event/hero.webp') }}"
             alt="Ibnu Sina Batam Run 2027"
+            width="6000"
+            height="4000"
+            loading="eager"
+            fetchpriority="high"
+            decoding="async"
             class="absolute inset-0
                    h-full w-full
                    object-cover

@@ -4,7 +4,11 @@
     {{-- BACKGROUND --}}
     <img
         src="{{ asset('assets/images/event/tagline.webp') }}"
-        alt="Race participants"
+        alt="Peserta Ibnu Sina Batam Run 2027"
+        width="1536"
+        height="1024"
+        loading="lazy"
+        decoding="async"
         class="absolute inset-0 h-full w-full object-cover object-center"
     >
 

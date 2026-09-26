@@ -50,11 +50,10 @@
 
             {{-- RIGHT: FORM --}}
             <form
-                action="#"
-                method="POST"
                 class="grid gap-3
                        sm:grid-cols-2
                        xl:grid-cols-[1fr_1fr_auto]"
+                aria-label="Newsletter subscription"
             >
 
                 {{-- NAME --}}
@@ -117,7 +116,7 @@
 
                 {{-- BUTTON --}}
                 <button
-                    type="submit"
+                    type="button"
                     class="h-[54px]
                            rounded-[4px]
                            bg-accent-500
@@ -176,7 +175,7 @@
                 >
 
                     <a
-                        href="{{ route('prices') }}"
+                        href="{{ route('race-info') }}"
                         class="w-fit
                                text-[14px]
                                text-white/90
@@ -350,6 +349,10 @@
                     <img
                         src="{{ asset('assets/images/logo/logo_ibsirun_2026_white.webp') }}"
                         alt="Ibnu Sina Batam Run 2027"
+                        width="1384"
+                        height="460"
+                        loading="lazy"
+                        decoding="async"
                         class="h-auto
                                w-[180px]
                                object-contain

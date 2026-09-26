@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('seo_title', 'About | Ibnu Sina Batam Run 2027')
+@section('seo_description', 'Kenali Ibnu Sina Batam Run 2027, pengalaman race day yang mempertemukan pelari, komunitas, dan semangat kota dalam satu momentum bersama yang berkesan.')
+@section('seo_canonical', route('about'))
+
 @section('content')
 
     {{-- NAVBAR --}}
@@ -34,6 +38,9 @@
                             <img
                                 src="{{ asset('assets/images/event/tagline.webp') }}"
                                 alt="About Ibnu Sina Batam Run 2027"
+                                width="1536"
+                                height="1024"
+                                decoding="async"
                                 class="aspect-[4/3]
                                        h-full w-full
                                        object-cover

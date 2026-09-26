@@ -1,5 +1,10 @@
 @extends('layouts.app')
 
+@section('seo_title', 'Contact Us | Ibnu Sina Batam Run 2027')
+@section('seo_description', 'Hubungi tim Ibnu Sina Batam Run 2027 melalui halaman kontak untuk pertanyaan seputar partisipasi, partnership, sponsorship, dan informasi event.')
+@section('seo_canonical', route('contact'))
+@section('seo_image', asset('assets/images/event/contact.webp'))
+
 @section('content')
 
     {{-- NAVBAR --}}
@@ -22,6 +27,11 @@
             <img
                 src="{{ asset('assets/images/event/contact.webp') }}"
                 alt="Contact Ibnu Sina Batam Run 2027"
+                width="6000"
+                height="3376"
+                loading="eager"
+                fetchpriority="high"
+                decoding="async"
                 class="absolute inset-0
                        h-full w-full
                        object-cover

@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('seo_title', 'Terms & Conditions | Ibnu Sina Batam Run 2027')
+@section('seo_description', 'Baca syarat dan ketentuan resmi Ibnu Sina Batam Run 2027 mengenai kategori, pendaftaran, BIB, COT, race pack, keselamatan, podium, dan peserta.')
+@section('seo_canonical', route('terms'))
+
 @section('content')
     <x-public.navbar variant="solid" />
 

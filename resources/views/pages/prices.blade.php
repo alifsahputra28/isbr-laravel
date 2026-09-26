@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('seo_title', 'Registration Prices | Ibnu Sina Batam Run 2027')
+@section('seo_description', 'Informasi harga pendaftaran resmi untuk kategori Ibnu Sina Batam Run 2027. Nominal akan ditampilkan di halaman ini setelah informasi resmi tersedia.')
+@section('seo_canonical', route('prices'))
+
 @section('content')
     <x-public.navbar variant="solid" />
 

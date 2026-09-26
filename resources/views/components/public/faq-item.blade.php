@@ -16,6 +16,7 @@
 
     <button
         type="button"
+        id="faq-toggle-{{ $id }}"
         class="hs-accordion-toggle
                flex w-full
                items-center
@@ -24,6 +25,8 @@
                px-5 py-5
                text-left
                sm:px-6"
+        aria-expanded="false"
+        aria-controls="faq-content-{{ $id }}"
     >
 
         <span
@@ -57,6 +60,7 @@
                 viewBox="0 0 24 24"
                 stroke="currentColor"
                 stroke-width="2"
+                aria-hidden="true"
             >
                 <path
                     stroke-linecap="round"
@@ -70,12 +74,14 @@
 
 
     <div
+        id="faq-content-{{ $id }}"
         class="hs-accordion-content
                hidden
                w-full
                overflow-hidden
                transition-[height]
                duration-300"
+        aria-labelledby="faq-toggle-{{ $id }}"
     >
 
         <div
