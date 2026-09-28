@@ -29,7 +29,7 @@
                            sm:text-[40px]
                            lg:text-[46px]"
                 >
-                    This race isn't simply about running.
+                    {{ __('site.about_home.heading') }}
                 </h2>
 
             </div>
@@ -50,9 +50,7 @@
                            sm:text-[18px]
                            lg:text-[20px]"
                 >
-                    It's about bringing runners, communities, and the city
-                    together in one race-day experience — creating moments,
-                    energy, and stories that continue beyond the finish line.
+                    {{ __('site.about_home.description') }}
                 </p>
 
 
@@ -65,15 +63,7 @@
                                overflow-hidden
                                bg-surface-soft"
                     >
-                        <img
-                            src="{{ asset('assets/images/event/tagline.webp') }}"
-                            alt="Ibnu Sina Batam Run 2027 runners"
-                            width="1536"
-                            height="1024"
-                            class="h-full w-full object-cover object-center"
-                            loading="lazy"
-                            decoding="async"
-                        >
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/2fOBYdaZUM8?si=7p4-YIxB0nG5Wxe7" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                     </div>
 
                 </div>
@@ -95,7 +85,7 @@
                                transition-colors duration-200
                                hover:bg-brand-800"
                     >
-                        More About The Race
+                        {{ __('site.about_home.cta') }}
                     </a>
 
                 </div>

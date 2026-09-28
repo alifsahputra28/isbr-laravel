@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('seo_title', 'Contact Us | Ibnu Sina Batam Run 2027')
-@section('seo_description', 'Hubungi tim Ibnu Sina Batam Run 2027 melalui halaman kontak untuk pertanyaan seputar partisipasi, partnership, sponsorship, dan informasi event.')
+@section('seo_title', __('site.seo.contact.title'))
+@section('seo_description', __('site.seo.contact.description'))
 @section('seo_canonical', route('contact'))
 @section('seo_image', asset('assets/images/event/contact.webp'))
 
@@ -26,7 +26,7 @@
             {{-- BACKGROUND IMAGE --}}
             <img
                 src="{{ asset('assets/images/event/contact.webp') }}"
-                alt="Contact Ibnu Sina Batam Run 2027"
+                alt="{{ __('site.contact.image_alt') }}"
                 width="6000"
                 height="3376"
                 loading="eager"
@@ -74,7 +74,7 @@
                                tracking-[0.16em]
                                text-white/75"
                     >
-                        Contact Us
+                        {{ __('site.contact.label') }}
                     </p>
 
 
@@ -89,7 +89,7 @@
                                sm:text-[54px]
                                lg:text-[64px]"
                     >
-                        How can we help you?
+                        {{ __('site.contact.title') }}
                     </h1>
 
                 </div>
@@ -130,7 +130,7 @@
                                    tracking-[-0.03em]
                                    text-heading"
                         >
-                            I'm interested in...
+                            {{ __('site.contact.interest_title') }}
                         </h2>
                     </div>
 
@@ -163,7 +163,7 @@
                                        peer-checked:bg-brand-700
                                        peer-checked:text-white"
                             >
-                                Participation
+                                {{ __('site.contact.interests.participation') }}
                             </span>
 
                         </label>
@@ -194,7 +194,7 @@
                                        peer-checked:bg-brand-700
                                        peer-checked:text-white"
                             >
-                                Sponsorship & Partnership
+                                {{ __('site.contact.interests.sponsorship') }}
                             </span>
 
                         </label>
@@ -225,7 +225,7 @@
                                        peer-checked:bg-brand-700
                                        peer-checked:text-white"
                             >
-                                Others
+                                {{ __('site.contact.interests.other') }}
                             </span>
 
                         </label>
@@ -255,7 +255,7 @@
                                    tracking-[-0.035em]
                                    text-heading"
                         >
-                            My Contact Info
+                            {{ __('site.contact.form_title') }}
                         </h2>
 
                         <p
@@ -265,7 +265,7 @@
                                    leading-6
                                    text-muted"
                         >
-                            Fill in your details and our team will get back to you.
+                            {{ __('site.contact.form_description') }}
                         </p>
 
                     </div>
@@ -284,7 +284,7 @@
                                        text-sm font-medium
                                        text-heading"
                             >
-                                Full Name
+                                {{ __('site.contact.full_name') }}
                                 <span class="text-danger">*</span>
                             </label>
 
@@ -292,7 +292,7 @@
                                 type="text"
                                 id="full_name"
                                 name="full_name"
-                                placeholder="e.g. John Doe"
+                                placeholder="{{ __('site.contact.full_name_placeholder') }}"
                                 class="block h-[52px]
                                        w-full
                                        rounded-lg
@@ -319,7 +319,7 @@
                                        text-sm font-medium
                                        text-heading"
                             >
-                                Email Address
+                                {{ __('site.contact.email') }}
                                 <span class="text-danger">*</span>
                             </label>
 
@@ -327,7 +327,7 @@
                                 type="email"
                                 id="email"
                                 name="email"
-                                placeholder="e.g. mail@example.com"
+                                placeholder="{{ __('site.contact.email_placeholder') }}"
                                 class="block h-[52px]
                                        w-full
                                        rounded-lg
@@ -354,7 +354,7 @@
                                        text-sm font-medium
                                        text-heading"
                             >
-                                Phone Number
+                                {{ __('site.contact.phone') }}
                             </label>
 
                             <div class="flex">
@@ -407,7 +407,7 @@
                                        text-sm font-medium
                                        text-heading"
                             >
-                                Subject
+                                {{ __('site.contact.subject') }}
                                 <span class="text-danger">*</span>
                             </label>
 
@@ -415,7 +415,7 @@
                                 type="text"
                                 id="subject"
                                 name="subject"
-                                placeholder="e.g. I want to know about..."
+                                placeholder="{{ __('site.contact.subject_placeholder') }}"
                                 class="block h-[52px]
                                        w-full
                                        rounded-lg
@@ -442,7 +442,7 @@
                                        text-sm font-medium
                                        text-heading"
                             >
-                                Message
+                                {{ __('site.contact.message') }}
                                 <span class="text-danger">*</span>
                             </label>
 
@@ -450,7 +450,7 @@
                                 id="message"
                                 name="message"
                                 rows="6"
-                                placeholder="Type your message here..."
+                                placeholder="{{ __('site.contact.message_placeholder') }}"
                                 class="block
                                        w-full
                                        resize-none
@@ -486,7 +486,7 @@
                                    hover:bg-brand-800
                                    active:bg-brand-900"
                         >
-                            Submit Message
+                            {{ __('site.contact.submit') }}
                         </button>
 
                     </form>
@@ -550,7 +550,7 @@
                                    tracking-[0.16em]
                                    text-brand-700"
                         >
-                            Instagram
+                            {{ __('site.contact.instagram') }}
                         </p>
 
                         <p class="mt-3 text-lg font-semibold text-heading">-</p>
@@ -568,7 +568,7 @@
                                    tracking-[0.16em]
                                    text-brand-700"
                         >
-                            Location
+                            {{ __('site.contact.location') }}
                         </p>
 
                         <p class="mt-3 text-lg font-semibold text-heading">-</p>

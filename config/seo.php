@@ -5,7 +5,7 @@ return [
 
     'site_name' => 'Ibnu Sina Batam Run 2027',
 
-    'default_title' => 'Ibnu Sina Batam Run 2027 (ISBR) | Official Event Website',
+    'default_title' => 'Ibnu Sina Batam Run 2027 (ISBR) | Website Resmi',
 
     'default_description' => 'Informasi Ibnu Sina Batam Run 2027 (ISBR), mulai dari kategori lomba, race information, race pack, podium prize, FAQ, dan pembaruan resmi event.',
 

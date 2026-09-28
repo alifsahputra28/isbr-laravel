@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('seo_title', 'About | Ibnu Sina Batam Run 2027')
-@section('seo_description', 'Kenali Ibnu Sina Batam Run 2027, pengalaman race day yang mempertemukan pelari, komunitas, dan semangat kota dalam satu momentum bersama yang berkesan.')
+@section('seo_title', __('site.seo.about.title'))
+@section('seo_description', __('site.seo.about.description'))
 @section('seo_canonical', route('about'))
 
 @section('content')
@@ -37,7 +37,7 @@
 
                             <img
                                 src="{{ asset('assets/images/event/tagline.webp') }}"
-                                alt="About Ibnu Sina Batam Run 2027"
+                                alt="{{ __('site.about.image_alt') }}"
                                 width="1536"
                                 height="1024"
                                 decoding="async"
@@ -56,7 +56,7 @@
                     <div class="lg:pt-10">
 
                         <p class="text-[11px] font-semibold uppercase tracking-[0.18em] text-brand-700">
-                            About The Race
+                            {{ __('site.about.label') }}
                         </p>
 
                         <h1
@@ -67,7 +67,7 @@
                                    text-heading
                                    sm:text-[42px]"
                         >
-                            About Us
+                            {{ __('site.about.title') }}
                         </h1>
 
 
@@ -79,26 +79,9 @@
                                    text-body"
                         >
 
-                            <p>
-                                Ibnu Sina Batam Run 2027 menghadirkan pengalaman lari yang
-                                mempertemukan pelari, komunitas, dan semangat
-                                kota dalam satu momentum race day.
-                            </p>
-
-                            <p>
-                                Lebih dari sekadar mencapai garis finis,
-                                event ini dirancang untuk menciptakan pengalaman
-                                yang berkesan sejak proses registrasi,
-                                race preparation, hingga hari perlombaan.
-                            </p>
-
-                            <p>
-                                Melalui penyelenggaraan yang terstruktur dan
-                                pengalaman peserta yang nyaman, ISBR
-                                ingin menjadi ruang bagi para pelari untuk
-                                bergerak, bertemu, dan menikmati perjalanan
-                                mereka bersama komunitas.
-                            </p>
+                            @foreach (__('site.about.paragraphs') as $paragraph)
+                                <p>{{ $paragraph }}</p>
+                            @endforeach
 
                         </div>
 

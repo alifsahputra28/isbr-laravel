@@ -4,7 +4,7 @@
     {{-- BACKGROUND --}}
     <img
         src="{{ asset('assets/images/event/tagline.webp') }}"
-        alt="Peserta Ibnu Sina Batam Run 2027"
+        alt="{{ __('site.about_home.image_alt') }}"
         width="1536"
         height="1024"
         loading="lazy"

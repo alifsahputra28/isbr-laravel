@@ -4,8 +4,8 @@
     ]) }}
 >
     <p class="text-[12px] font-medium leading-5 text-muted">
-        Interested?
+        {{ __('site.partners.slot_line_one') }}
         <br>
-        <span class="font-semibold text-heading">Place Your Logo</span>
+        <span class="font-semibold text-heading">{{ __('site.partners.slot_line_two') }}</span>
     </p>
 </div>

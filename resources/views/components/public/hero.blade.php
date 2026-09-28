@@ -135,8 +135,7 @@
                                sm:text-[15px]
                                sm:leading-7"
                     >
-                        Discover race information, categories, and official updates
-                        to help you prepare for race day.
+                        {{ __('site.hero.description') }}
                     </p>
 
 
@@ -160,7 +159,7 @@
                                    transition
                                    hover:bg-surface-soft"
                         >
-                            Race Information
+                            {{ __('site.hero.race_information') }}
                         </a>
 
 
@@ -179,7 +178,7 @@
                                    transition
                                    hover:bg-white/10"
                         >
-                            Learn More
+                            {{ __('site.hero.learn_more') }}
                         </a>
 
                     </div>

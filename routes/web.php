@@ -8,51 +8,45 @@ use Illuminate\Support\Facades\Route;
 |--------------------------------------------------------------------------
 */
 
-Route::view('/', 'pages.event-profile')
-    ->name('home');
+$publicPages = [
+    'home' => ['/', 'pages.event-profile'],
+    'about' => ['/about', 'pages.about'],
+    'race-info' => ['/race-info', 'pages.race-info'],
+    'race-pack' => ['/race-pack', 'pages.race-pack'],
+    'route' => ['/route', 'pages.route'],
+    'prices' => ['/prices', 'pages.prices'],
+    'podium-prize' => ['/podium-prize', 'pages.podium-prize'],
+    'faq' => ['/faq', 'pages.faq'],
+    'terms' => ['/terms', 'pages.terms'],
+    'contact' => ['/contact', 'pages.contact'],
+];
 
-Route::view('/about', 'pages.about')
-    ->name('about');
+Route::redirect('/', '/id', 302);
 
-Route::view('/race-info', 'pages.race-info')
-    ->name('race-info');
+Route::prefix('{locale}')
+    ->whereIn('locale', ['id', 'en'])
+    ->group(function () use ($publicPages): void {
+        foreach ($publicPages as $name => [$uri, $view]) {
+            Route::view($uri, $view)->name($name);
+        }
 
-Route::view('/race-pack', 'pages.race-pack')
-    ->name('race-pack');
+        Route::get('/{path}', fn () => abort(404))
+            ->where('path', '.*');
+    });
 
-Route::view('/route', 'pages.route')
-    ->name('route');
+foreach ($publicPages as [$uri]) {
+    if ($uri !== '/') {
+        Route::redirect($uri, '/id'.$uri, 302);
+    }
+}
 
-Route::view('/prices', 'pages.prices')
-    ->name('prices');
-
-Route::view('/podium-prize', 'pages.podium-prize')
-    ->name('podium-prize');
-
-Route::view('/faq', 'pages.faq')
-    ->name('faq');
-
-Route::view('/terms', 'pages.terms')
-    ->name('terms');
-
-Route::view('/contact', 'pages.contact')
-    ->name('contact');
-
-Route::get('/sitemap.xml', function () {
-    $publicRoutes = [
-        'home',
-        'about',
-        'race-info',
-        'race-pack',
-        'prices',
-        'podium-prize',
-        'faq',
-        'terms',
-        'contact',
-        'route',
-    ];
+Route::get('/sitemap.xml', function () use ($publicPages) {
+    $pages = collect(array_keys($publicPages))->map(fn (string $name): array => [
+        'id' => route($name, ['locale' => 'id']),
+        'en' => route($name, ['locale' => 'en']),
+    ]);
 
     return response()
-        ->view('sitemap', ['urls' => collect($publicRoutes)->map(fn (string $name) => route($name))])
+        ->view('sitemap', ['pages' => $pages])
         ->header('Content-Type', 'application/xml');
 })->name('sitemap');

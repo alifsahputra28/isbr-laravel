@@ -1,57 +1,117 @@
 @props(['variant' => 'overlay'])
 
 @php
-    $eventActive = request()->routeIs('race-info', 'race-pack', 'prices', 'podium-prize', 'faq', 'terms');
+    $eventActive = request()->routeIs(
+        'race-info',
+        'race-pack',
+        'prices',
+        'podium-prize',
+        'faq',
+        'terms'
+    );
+
+    $currentRouteName = request()->route()?->getName();
+
+    $currentLocale = app()->getLocale();
+
+    $localizableRoutes = [
+        'home',
+        'about',
+        'race-info',
+        'race-pack',
+        'prices',
+        'podium-prize',
+        'faq',
+        'terms',
+        'contact',
+        'route',
+    ];
+
+    /*
+    |--------------------------------------------------------------------------
+    | Current locale URL
+    |--------------------------------------------------------------------------
+    |
+    | Digunakan seluruh link internal navbar agar locale tetap terbawa.
+    |
+    */
+    $routeUrl = static fn (string $routeName): string =>
+        route($routeName, ['locale' => $currentLocale]);
+
+    /*
+    |--------------------------------------------------------------------------
+    | Language switcher URL
+    |--------------------------------------------------------------------------
+    |
+    | Mempertahankan halaman yang sedang dibuka.
+    |
+    | /id/race-info -> /en/race-info
+    | /en/faq       -> /id/faq
+    |
+    */
+    $localeUrl = static fn (string $locale): string =>
+        in_array($currentRouteName, $localizableRoutes, true)
+            ? route($currentRouteName, ['locale' => $locale])
+            : route('home', ['locale' => $locale]);
 @endphp
+
 
 <header
     class="public-navbar {{ $variant === 'solid' ? 'is-solid' : 'is-overlay' }}"
     data-public-navbar
     data-navbar-variant="{{ $variant }}"
 >
-
     <div
         class="relative mx-auto flex h-[92px]
                max-w-[1440px]
                items-center
-               px-6 sm:px-8 lg:px-10 xl:px-12"
+               px-5
+               sm:px-8
+               lg:px-10
+               xl:px-12"
     >
 
-        {{-- =========================
-             LEFT NAVIGATION
-        ========================== --}}
+        {{-- =========================================================
+             DESKTOP LEFT NAVIGATION
+        ========================================================== --}}
         <nav
             class="hidden flex-1 items-center gap-7 lg:flex"
-            aria-label="Main navigation"
+            aria-label="{{ __('navigation.main_label') }}"
         >
 
             {{-- HOME --}}
             <a
-                href="{{ route('home') }}"
+                href="{{ $routeUrl('home') }}"
                 class="text-[14px] font-medium
                        text-white/90
                        transition-colors duration-200
                        hover:text-white
-                       {{ request()->routeIs('home') ? 'text-white underline underline-offset-8' : '' }}"
+                       {{ request()->routeIs('home')
+                            ? 'text-white underline underline-offset-8'
+                            : '' }}"
             >
-                Home
+                {{ __('navigation.home') }}
             </a>
 
 
             {{-- ABOUT --}}
             <a
-                href="{{ route('about') }}"
+                href="{{ $routeUrl('about') }}"
                 class="text-[14px] font-medium
                        text-white/90
                        transition-colors duration-200
                        hover:text-white
-                       {{ request()->routeIs('about') ? 'text-white underline underline-offset-8' : '' }}"
+                       {{ request()->routeIs('about')
+                            ? 'text-white underline underline-offset-8'
+                            : '' }}"
             >
-                About
+                {{ __('navigation.about') }}
             </a>
 
 
-            {{-- EVENT DROPDOWN --}}
+            {{-- =====================================================
+                 EVENT DROPDOWN
+            ====================================================== --}}
             <div class="hs-dropdown relative inline-flex">
 
                 <button
@@ -63,11 +123,13 @@
                            text-white/90
                            transition-colors duration-200
                            hover:text-white
-                           {{ $eventActive ? 'text-white underline underline-offset-8' : '' }}"
+                           {{ $eventActive
+                                ? 'text-white underline underline-offset-8'
+                                : '' }}"
                     aria-haspopup="menu"
                     aria-expanded="false"
                 >
-                    Event
+                    {{ __('navigation.event') }}
 
                     <svg
                         aria-hidden="true"
@@ -89,7 +151,7 @@
                 </button>
 
 
-                {{-- DROPDOWN --}}
+                {{-- DROPDOWN MENU --}}
                 <div
                     class="hs-dropdown-menu
                            z-50 mt-5 hidden
@@ -107,7 +169,7 @@
                 >
 
                     <a
-                        href="{{ route('race-info') }}"
+                        href="{{ $routeUrl('race-info') }}"
                         class="flex min-h-[50px]
                                items-center
                                rounded-[9px]
@@ -117,11 +179,11 @@
                                transition
                                hover:bg-brand-50"
                     >
-                        Race Info
+                        {{ __('navigation.race_info') }}
                     </a>
 
                     <a
-                        href="{{ route('race-pack') }}"
+                        href="{{ $routeUrl('race-pack') }}"
                         class="flex min-h-[50px]
                                items-center
                                rounded-[9px]
@@ -131,11 +193,11 @@
                                transition
                                hover:bg-brand-50"
                     >
-                        Race Pack
+                        {{ __('navigation.race_pack') }}
                     </a>
 
                     <a
-                        href="{{ route('prices') }}"
+                        href="{{ $routeUrl('prices') }}"
                         class="flex min-h-[50px]
                                items-center
                                rounded-[9px]
@@ -145,11 +207,11 @@
                                transition
                                hover:bg-brand-50"
                     >
-                        Prices
+                        {{ __('navigation.prices') }}
                     </a>
 
                     <a
-                        href="{{ route('podium-prize') }}"
+                        href="{{ $routeUrl('podium-prize') }}"
                         class="flex min-h-[50px]
                                items-center
                                rounded-[9px]
@@ -159,11 +221,11 @@
                                transition
                                hover:bg-brand-50"
                     >
-                        Podium Prize
+                        {{ __('navigation.podium_prize') }}
                     </a>
 
                     <a
-                        href="{{ route('faq') }}"
+                        href="{{ $routeUrl('faq') }}"
                         class="flex min-h-[50px]
                                items-center
                                rounded-[9px]
@@ -177,7 +239,7 @@
                     </a>
 
                     <a
-                        href="{{ route('terms') }}"
+                        href="{{ $routeUrl('terms') }}"
                         class="flex min-h-[50px]
                                items-center
                                rounded-[9px]
@@ -187,53 +249,56 @@
                                transition
                                hover:bg-brand-50"
                     >
-                        Terms & Conditions
+                        {{ __('navigation.terms') }}
                     </a>
 
                 </div>
-
             </div>
 
 
             {{-- ROUTE --}}
             <a
-                href="{{ route('route') }}"
+                href="{{ $routeUrl('route') }}"
                 class="text-[14px] font-medium
                        text-white/90
                        transition-colors duration-200
                        hover:text-white
-                       {{ request()->routeIs('route') ? 'text-white underline underline-offset-8' : '' }}"
+                       {{ request()->routeIs('route')
+                            ? 'text-white underline underline-offset-8'
+                            : '' }}"
             >
-                Route
+                {{ __('navigation.route') }}
             </a>
 
 
             {{-- CONTACT --}}
             <a
-                href="{{ route('contact') }}"
+                href="{{ $routeUrl('contact') }}"
                 class="text-[14px] font-medium
                        text-white/90
                        transition-colors duration-200
                        hover:text-white
-                       {{ request()->routeIs('contact') ? 'text-white underline underline-offset-8' : '' }}"
+                       {{ request()->routeIs('contact')
+                            ? 'text-white underline underline-offset-8'
+                            : '' }}"
             >
-                Contact Us
+                {{ __('navigation.contact') }}
             </a>
 
         </nav>
 
 
 
-        {{-- =========================
+        {{-- =========================================================
              CENTER LOGO
-        ========================== --}}
+        ========================================================== --}}
         <a
-            href="{{ route('home') }}"
+            href="{{ $routeUrl('home') }}"
             class="absolute left-1/2 top-1/2
                    z-10
                    -translate-x-1/2
                    -translate-y-1/2"
-            aria-label="Home"
+            aria-label="{{ __('navigation.home') }}"
         >
             <img
                 src="{{ asset('assets/images/logo/logo_ibsirun_2026_white.webp') }}"
@@ -242,7 +307,7 @@
                 height="460"
                 loading="eager"
                 decoding="async"
-                class="h-10 w-auto
+                class="h-9 w-auto
                        object-contain
                        sm:h-11
                        lg:h-12"
@@ -251,20 +316,213 @@
 
 
 
-        {{-- =========================
-             RIGHT
-        ========================== --}}
+        {{-- =========================================================
+             RIGHT AREA
+        ========================================================== --}}
         <div
             class="ml-auto flex flex-1
-                   items-center justify-end"
+                   items-center justify-end
+                   gap-3"
         >
 
-            {{-- MOBILE MENU BUTTON --}}
+            {{-- =====================================================
+                 DESKTOP LANGUAGE SWITCHER
+                 US + INDONESIA
+            ====================================================== --}}
+            <nav
+                class="hidden items-center gap-3 lg:flex"
+                aria-label="{{ __('navigation.language') }}"
+            >
+
+                {{-- ENGLISH --}}
+                <a
+                    href="{{ $localeUrl('en') }}"
+                    hreflang="en"
+                    lang="en"
+                    aria-label="English"
+                    @if ($currentLocale === 'en')
+                        aria-current="page"
+                    @endif
+                    class="group inline-flex size-8
+                           items-center justify-center
+                           rounded-full
+                           transition-all duration-200
+                           {{ $currentLocale === 'en'
+                                ? 'opacity-100'
+                                : 'opacity-55 hover:opacity-100' }}"
+                >
+                    <span
+                        class="block size-8
+                               overflow-hidden
+                               rounded-full
+                               ring-1 ring-white/25
+                               transition-all duration-200
+                               group-hover:ring-white/60
+                               {{ $currentLocale === 'en'
+                                    ? 'ring-2 ring-white'
+                                    : '' }}"
+                    >
+                        <img
+                            src="{{ asset('assets/images/flags/us.svg') }}"
+                            alt=""
+                            width="32"
+                            height="32"
+                            class="h-full w-full object-cover"
+                            aria-hidden="true"
+                        >
+                    </span>
+                </a>
+
+
+                {{-- INDONESIA --}}
+                <a
+                    href="{{ $localeUrl('id') }}"
+                    hreflang="id"
+                    lang="id"
+                    aria-label="Bahasa Indonesia"
+                    @if ($currentLocale === 'id')
+                        aria-current="page"
+                    @endif
+                    class="group inline-flex size-8
+                           items-center justify-center
+                           rounded-full
+                           transition-all duration-200
+                           {{ $currentLocale === 'id'
+                                ? 'opacity-100'
+                                : 'opacity-55 hover:opacity-100' }}"
+                >
+                    <span
+                        class="block size-8
+                               overflow-hidden
+                               rounded-full
+                               ring-1 ring-white/25
+                               transition-all duration-200
+                               group-hover:ring-white/60
+                               {{ $currentLocale === 'id'
+                                    ? 'ring-2 ring-white'
+                                    : '' }}"
+                    >
+                        <img
+                            src="{{ asset('assets/images/flags/id.svg') }}"
+                            alt=""
+                            width="32"
+                            height="32"
+                            class="h-full w-full object-cover"
+                            aria-hidden="true"
+                        >
+                    </span>
+                </a>
+
+            </nav>
+
+
+
+            {{-- =====================================================
+                 MOBILE LANGUAGE SWITCHER
+
+                 PENTING:
+                 Switcher ini berada DI LUAR mobile navigation menu.
+                 Selalu tampil di navbar mobile.
+            ====================================================== --}}
+            <nav
+                class="flex items-center gap-2 lg:hidden"
+                aria-label="{{ __('navigation.language') }}"
+            >
+
+                {{-- ENGLISH --}}
+                <a
+                    href="{{ $localeUrl('en') }}"
+                    hreflang="en"
+                    lang="en"
+                    aria-label="English"
+                    @if ($currentLocale === 'en')
+                        aria-current="page"
+                    @endif
+                    class="group inline-flex size-8
+                           items-center justify-center
+                           rounded-full
+                           transition-all duration-200
+                           {{ $currentLocale === 'en'
+                                ? 'opacity-100'
+                                : 'opacity-55 hover:opacity-100' }}"
+                >
+                    <span
+                        class="block size-7
+                               overflow-hidden
+                               rounded-full
+                               ring-1 ring-white/25
+                               transition-all duration-200
+                               group-hover:ring-white/60
+                               sm:size-8
+                               {{ $currentLocale === 'en'
+                                    ? 'ring-2 ring-white'
+                                    : '' }}"
+                    >
+                        <img
+                            src="{{ asset('assets/images/flags/us.svg') }}"
+                            alt=""
+                            width="32"
+                            height="32"
+                            class="h-full w-full object-cover"
+                            aria-hidden="true"
+                        >
+                    </span>
+                </a>
+
+
+                {{-- INDONESIA --}}
+                <a
+                    href="{{ $localeUrl('id') }}"
+                    hreflang="id"
+                    lang="id"
+                    aria-label="Bahasa Indonesia"
+                    @if ($currentLocale === 'id')
+                        aria-current="page"
+                    @endif
+                    class="group inline-flex size-8
+                           items-center justify-center
+                           rounded-full
+                           transition-all duration-200
+                           {{ $currentLocale === 'id'
+                                ? 'opacity-100'
+                                : 'opacity-55 hover:opacity-100' }}"
+                >
+                    <span
+                        class="block size-7
+                               overflow-hidden
+                               rounded-full
+                               ring-1 ring-white/25
+                               transition-all duration-200
+                               group-hover:ring-white/60
+                               sm:size-8
+                               {{ $currentLocale === 'id'
+                                    ? 'ring-2 ring-white'
+                                    : '' }}"
+                    >
+                        <img
+                            src="{{ asset('assets/images/flags/id.svg') }}"
+                            alt=""
+                            width="32"
+                            height="32"
+                            class="h-full w-full object-cover"
+                            aria-hidden="true"
+                        >
+                    </span>
+                </a>
+
+            </nav>
+
+
+
+            {{-- =====================================================
+                 MOBILE MENU BUTTON
+            ====================================================== --}}
             <button
                 type="button"
                 id="mobile-navbar-toggle"
                 class="hs-collapse-toggle
                        inline-flex size-11
+                       shrink-0
                        items-center justify-center
                        rounded-full
                        border border-white/30
@@ -277,10 +535,10 @@
                 aria-expanded="false"
                 aria-controls="mobile-navbar"
                 data-hs-collapse="#mobile-navbar"
-                aria-label="Open navigation"
+                aria-label="{{ __('navigation.open_navigation') }}"
             >
 
-                {{-- Hamburger --}}
+                {{-- HAMBURGER --}}
                 <svg
                     aria-hidden="true"
                     class="size-5 hs-collapse-open:hidden"
@@ -298,7 +556,7 @@
                 </svg>
 
 
-                {{-- Close --}}
+                {{-- CLOSE --}}
                 <svg
                     aria-hidden="true"
                     class="hidden size-5 hs-collapse-open:block"
@@ -323,9 +581,11 @@
 
 
 
-    {{-- =========================
-         MOBILE NAVIGATION
-    ========================== --}}
+    {{-- =============================================================
+         MOBILE NAVIGATION MENU
+
+         LANGUAGE SWITCHER SUDAH TIDAK ADA DI SINI.
+    ============================================================== --}}
     <div
         id="mobile-navbar"
         class="hs-collapse hidden
@@ -339,41 +599,52 @@
         <div
             class="rounded-2xl
                    border border-white/10
-                   {{ $variant === 'solid' ? 'bg-brand-900/95' : 'bg-neutral-950/95' }}
+                   {{ $variant === 'solid'
+                        ? 'bg-brand-900/95'
+                        : 'bg-neutral-950/95' }}
                    p-2
                    shadow-2xl
                    backdrop-blur-xl"
         >
 
+            {{-- HOME --}}
             <a
-                href="{{ route('home') }}"
+                href="{{ $routeUrl('home') }}"
                 class="block rounded-xl
                        px-4 py-3
                        text-sm font-medium
                        text-white
                        transition
                        hover:bg-white/10
-                       {{ request()->routeIs('home') ? 'bg-white/10' : '' }}"
+                       {{ request()->routeIs('home')
+                            ? 'bg-white/10'
+                            : '' }}"
             >
-                Home
+                {{ __('navigation.home') }}
             </a>
 
 
+            {{-- ABOUT --}}
             <a
-                href="{{ route('about') }}"
+                href="{{ $routeUrl('about') }}"
                 class="block rounded-xl
                        px-4 py-3
                        text-sm font-medium
                        text-white
                        transition
                        hover:bg-white/10
-                       {{ request()->routeIs('about') ? 'bg-white/10' : '' }}"
+                       {{ request()->routeIs('about')
+                            ? 'bg-white/10'
+                            : '' }}"
             >
-                About
+                {{ __('navigation.about') }}
             </a>
 
 
-            {{-- MOBILE EVENT ACCORDION --}}
+
+            {{-- =====================================================
+                 MOBILE EVENT ACCORDION
+            ====================================================== --}}
             <div
                 class="hs-accordion"
                 id="mobile-event-accordion"
@@ -392,11 +663,13 @@
                            text-white
                            transition
                            hover:bg-white/10
-                           {{ $eventActive ? 'bg-white/10' : '' }}"
+                           {{ $eventActive
+                                ? 'bg-white/10'
+                                : '' }}"
                     aria-expanded="false"
                     aria-controls="mobile-event-menu"
                 >
-                    Event
+                    {{ __('navigation.event') }}
 
                     <svg
                         aria-hidden="true"
@@ -431,59 +704,64 @@
                     <div class="pb-2 pl-3">
 
                         <a
-                            href="{{ route('race-info') }}"
+                            href="{{ $routeUrl('race-info') }}"
                             class="block rounded-lg
                                    px-4 py-3
                                    text-sm
                                    text-white/65
+                                   transition
                                    hover:bg-white/10
                                    hover:text-white"
                         >
-                            Race Info
+                            {{ __('navigation.race_info') }}
                         </a>
 
                         <a
-                            href="{{ route('race-pack') }}"
+                            href="{{ $routeUrl('race-pack') }}"
                             class="block rounded-lg
                                    px-4 py-3
                                    text-sm
                                    text-white/65
+                                   transition
                                    hover:bg-white/10
                                    hover:text-white"
                         >
-                            Race Pack
+                            {{ __('navigation.race_pack') }}
                         </a>
 
                         <a
-                            href="{{ route('prices') }}"
+                            href="{{ $routeUrl('prices') }}"
                             class="block rounded-lg
                                    px-4 py-3
                                    text-sm
                                    text-white/65
+                                   transition
                                    hover:bg-white/10
                                    hover:text-white"
                         >
-                            Prices
+                            {{ __('navigation.prices') }}
                         </a>
 
                         <a
-                            href="{{ route('podium-prize') }}"
+                            href="{{ $routeUrl('podium-prize') }}"
                             class="block rounded-lg
                                    px-4 py-3
                                    text-sm
                                    text-white/65
+                                   transition
                                    hover:bg-white/10
                                    hover:text-white"
                         >
-                            Podium Prize
+                            {{ __('navigation.podium_prize') }}
                         </a>
 
                         <a
-                            href="{{ route('faq') }}"
+                            href="{{ $routeUrl('faq') }}"
                             class="block rounded-lg
                                    px-4 py-3
                                    text-sm
                                    text-white/65
+                                   transition
                                    hover:bg-white/10
                                    hover:text-white"
                         >
@@ -491,15 +769,16 @@
                         </a>
 
                         <a
-                            href="{{ route('terms') }}"
+                            href="{{ $routeUrl('terms') }}"
                             class="block rounded-lg
                                    px-4 py-3
                                    text-sm
                                    text-white/65
+                                   transition
                                    hover:bg-white/10
                                    hover:text-white"
                         >
-                            Terms & Conditions
+                            {{ __('navigation.terms') }}
                         </a>
 
                     </div>
@@ -509,33 +788,39 @@
             </div>
 
 
+
+            {{-- ROUTE --}}
             <a
-                href="{{ route('route') }}"
+                href="{{ $routeUrl('route') }}"
                 class="block rounded-xl
                        px-4 py-3
                        text-sm font-medium
                        text-white
                        transition
                        hover:bg-white/10
-                       {{ request()->routeIs('route') ? 'bg-white/10' : '' }}"
+                       {{ request()->routeIs('route')
+                            ? 'bg-white/10'
+                            : '' }}"
             >
-                Route
+                {{ __('navigation.route') }}
             </a>
 
 
+            {{-- CONTACT --}}
             <a
-                href="{{ route('contact') }}"
+                href="{{ $routeUrl('contact') }}"
                 class="block rounded-xl
                        px-4 py-3
                        text-sm font-medium
                        text-white
                        transition
                        hover:bg-white/10
-                       {{ request()->routeIs('contact') ? 'bg-white/10' : '' }}"
+                       {{ request()->routeIs('contact')
+                            ? 'bg-white/10'
+                            : '' }}"
             >
-                Contact Us
+                {{ __('navigation.contact') }}
             </a>
-
 
         </div>
 
@@ -543,6 +828,10 @@
 
 </header>
 
+
 @if ($variant === 'solid')
-    <div class="public-navbar-offset" aria-hidden="true"></div>
+    <div
+        class="public-navbar-offset"
+        aria-hidden="true"
+    ></div>
 @endif

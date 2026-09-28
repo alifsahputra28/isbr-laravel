@@ -31,7 +31,7 @@
                            text-brand-300
                            sm:text-[32px]"
                 >
-                    Subscribe
+                    {{ __('site.footer.subscribe') }}
                 </h2>
 
                 <p
@@ -40,9 +40,7 @@
                            leading-7
                            text-white/90"
                 >
-                    Be the first to know about race updates,
-                    registration information, and everything
-                    happening before race day.
+                    {{ __('site.footer.subscribe_description') }}
                 </p>
 
             </div>
@@ -53,7 +51,7 @@
                 class="grid gap-3
                        sm:grid-cols-2
                        xl:grid-cols-[1fr_1fr_auto]"
-                aria-label="Newsletter subscription"
+                aria-label="{{ __('site.footer.newsletter_label') }}"
             >
 
                 {{-- NAME --}}
@@ -62,14 +60,14 @@
                         for="subscribe-name"
                         class="sr-only"
                     >
-                        Name
+                        {{ __('site.footer.name') }}
                     </label>
 
                     <input
                         type="text"
                         id="subscribe-name"
                         name="name"
-                        placeholder="Name"
+                        placeholder="{{ __('site.footer.name') }}"
                         class="block h-[54px]
                                w-full
                                rounded-[4px]
@@ -129,7 +127,7 @@
                            sm:col-span-2
                            xl:col-span-1"
                 >
-                    Subscribe
+                    {{ __('site.footer.subscribe') }}
                 </button>
 
             </form>
@@ -166,12 +164,12 @@
                            uppercase
                            text-white"
                 >
-                    Quick Link
+                    {{ __('site.footer.quick_links') }}
                 </h3>
 
                 <nav
                     class="mt-6 flex flex-col gap-3"
-                    aria-label="Footer quick links"
+                    aria-label="{{ __('site.footer.quick_links') }}"
                 >
 
                     <a
@@ -182,7 +180,7 @@
                                transition-colors
                                hover:text-white"
                     >
-                        Race Categories
+                        {{ __('site.footer.race_categories') }}
                     </a>
 
                     <a
@@ -204,7 +202,7 @@
                                transition-colors
                                hover:text-white"
                     >
-                        Terms & Conditions
+                        {{ __('navigation.terms') }}
                     </a>
 
                     <a
@@ -215,7 +213,7 @@
                                transition-colors
                                hover:text-white"
                     >
-                        Prices
+                        {{ __('site.footer.prices') }}
                     </a>
 
                 </nav>
@@ -234,14 +232,12 @@
                            leading-tight
                            text-white"
                 >
-                    Race
-                    <br>
-                    Information
+                    {{ __('site.footer.race_information') }}
                 </h3>
 
                 <nav
                     class="mt-6 flex flex-col gap-3"
-                    aria-label="Race information"
+                    aria-label="{{ __('site.footer.race_information') }}"
                 >
 
                     <a
@@ -252,7 +248,7 @@
                                transition-colors
                                hover:text-white"
                     >
-                        Race Info
+                        {{ __('site.footer.race_info') }}
                     </a>
 
                     <a
@@ -263,7 +259,7 @@
                                transition-colors
                                hover:text-white"
                     >
-                        Race Pack
+                        {{ __('site.footer.race_pack') }}
                     </a>
 
                     <a
@@ -274,7 +270,7 @@
                                transition-colors
                                hover:text-white"
                     >
-                        Podium Prize
+                        {{ __('site.footer.podium_prize') }}
                     </a>
 
                     <a
@@ -285,7 +281,7 @@
                                transition-colors
                                hover:text-white"
                     >
-                        Race Route
+                        {{ __('site.footer.race_route') }}
                     </a>
 
                 </nav>
@@ -303,7 +299,7 @@
                            uppercase
                            text-white"
                 >
-                    <a href="{{ route('contact') }}" class="hover:text-white/80">Contact Us</a>
+                    <a href="{{ route('contact') }}" class="hover:text-white/80">{{ __('site.footer.contact') }}</a>
                 </h3>
 
 
@@ -388,7 +384,7 @@
                        font-semibold
                        text-white"
             >
-                © {{ date('Y') }} Ibnu Sina Batam Run. All Rights Reserved.
+                {{ __('site.footer.copyright', ['year' => date('Y')]) }}
             </p>
 
         </div>
