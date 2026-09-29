@@ -135,7 +135,8 @@
                     </div>
 
 
-                    <div class="flex flex-wrap gap-3">
+                    <div>
+                        <div class="flex flex-wrap gap-3">
 
                         {{-- PARTICIPATION --}}
                         <label class="cursor-pointer">
@@ -144,8 +145,9 @@
                                 type="radio"
                                 name="interest"
                                 value="participation"
+                                form="contact-form"
                                 class="peer sr-only"
-                                checked
+                                @checked(old('interest', 'participation') === 'participation')
                             >
 
                             <span
@@ -176,7 +178,9 @@
                                 type="radio"
                                 name="interest"
                                 value="sponsorship"
+                                form="contact-form"
                                 class="peer sr-only"
+                                @checked(old('interest') === 'sponsorship')
                             >
 
                             <span
@@ -207,7 +211,9 @@
                                 type="radio"
                                 name="interest"
                                 value="other"
+                                form="contact-form"
                                 class="peer sr-only"
+                                @checked(old('interest') === 'other')
                             >
 
                             <span
@@ -230,6 +236,11 @@
 
                         </label>
 
+                        </div>
+
+                        @error('interest')
+                            <p class="mt-2 text-sm text-danger">{{ $message }}</p>
+                        @enderror
                     </div>
 
                 </div>
@@ -272,7 +283,23 @@
 
 
                     {{-- FORM --}}
-                    <form class="space-y-5">
+                    <div>
+                        @if (session('contact_success'))
+                            <div
+                                role="status"
+                                class="mb-5 rounded-lg border border-brand-200 bg-brand-50 px-4 py-3 text-sm text-brand-800"
+                            >
+                                {{ session('contact_success') }}
+                            </div>
+                        @endif
+
+                        <form
+                            id="contact-form"
+                            action="{{ route('contact.submit', ['locale' => app()->getLocale()]) }}"
+                            method="POST"
+                            class="space-y-5"
+                        >
+                            @csrf
 
 
                         {{-- FULL NAME --}}
@@ -292,7 +319,10 @@
                                 type="text"
                                 id="full_name"
                                 name="full_name"
+                                value="{{ old('full_name') }}"
                                 placeholder="{{ __('site.contact.full_name_placeholder') }}"
+                                required
+                                autocomplete="name"
                                 class="block h-[52px]
                                        w-full
                                        rounded-lg
@@ -305,6 +335,10 @@
                                        focus:border-brand-500
                                        focus:ring-brand-500"
                             >
+
+                            @error('full_name')
+                                <p class="mt-2 text-sm text-danger">{{ $message }}</p>
+                            @enderror
 
                         </div>
 
@@ -327,7 +361,10 @@
                                 type="email"
                                 id="email"
                                 name="email"
+                                value="{{ old('email') }}"
                                 placeholder="{{ __('site.contact.email_placeholder') }}"
+                                required
+                                autocomplete="email"
                                 class="block h-[52px]
                                        w-full
                                        rounded-lg
@@ -340,6 +377,10 @@
                                        focus:border-brand-500
                                        focus:ring-brand-500"
                             >
+
+                            @error('email')
+                                <p class="mt-2 text-sm text-danger">{{ $message }}</p>
+                            @enderror
 
                         </div>
 
@@ -378,7 +419,10 @@
                                     type="tel"
                                     id="phone"
                                     name="phone"
+                                    value="{{ old('phone') }}"
                                     placeholder="812 3456 7890"
+                                    autocomplete="tel"
+                                    inputmode="tel"
                                     class="block h-[52px]
                                            w-full
                                            rounded-r-lg
@@ -393,6 +437,10 @@
                                 >
 
                             </div>
+
+                            @error('phone')
+                                <p class="mt-2 text-sm text-danger">{{ $message }}</p>
+                            @enderror
 
                         </div>
 
@@ -415,7 +463,9 @@
                                 type="text"
                                 id="subject"
                                 name="subject"
+                                value="{{ old('subject') }}"
                                 placeholder="{{ __('site.contact.subject_placeholder') }}"
+                                required
                                 class="block h-[52px]
                                        w-full
                                        rounded-lg
@@ -428,6 +478,10 @@
                                        focus:border-brand-500
                                        focus:ring-brand-500"
                             >
+
+                            @error('subject')
+                                <p class="mt-2 text-sm text-danger">{{ $message }}</p>
+                            @enderror
 
                         </div>
 
@@ -451,6 +505,7 @@
                                 name="message"
                                 rows="6"
                                 placeholder="{{ __('site.contact.message_placeholder') }}"
+                                required
                                 class="block
                                        w-full
                                        resize-none
@@ -464,7 +519,11 @@
                                        placeholder:text-subtle
                                        focus:border-brand-500
                                        focus:ring-brand-500"
-                            ></textarea>
+                            >{{ old('message') }}</textarea>
+
+                            @error('message')
+                                <p class="mt-2 text-sm text-danger">{{ $message }}</p>
+                            @enderror
 
                         </div>
 
@@ -472,7 +531,7 @@
 
                         {{-- SUBMIT --}}
                         <button
-                            type="button"
+                            type="submit"
                             class="inline-flex h-[52px]
                                    w-full
                                    items-center
@@ -489,7 +548,8 @@
                             {{ __('site.contact.submit') }}
                         </button>
 
-                    </form>
+                        </form>
+                    </div>
 
                 </div>
 

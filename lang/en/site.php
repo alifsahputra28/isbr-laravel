@@ -66,9 +66,8 @@ return [
         'title' => 'About Us',
         'image_alt' => 'About Ibnu Sina Batam Run 2027',
         'paragraphs' => [
-            'Ibnu Sina Batam Run 2027 brings together runners, communities, and the spirit of the city in one memorable race-day experience.',
-            'Beyond reaching the finish line, the event is designed to create a meaningful experience from registration and race preparation through to race day.',
-            'Through an organized event and a comfortable participant experience, ISBR aims to provide a space for runners to move, connect, and enjoy the journey with their community.',
+            'Ibnu Sina Batam Run 2027 is a running event organized as part of an effort to provide a well-structured, inclusive, and participant-oriented sporting experience. The event is designed to bring together runners from various backgrounds, communities, and the wider public in an organized and professional race environment.',
+            'The implementation of ISBR 2027 is not solely focused on competition, but also on the overall quality of the event from preparation through race day. Through clear information, structured preparation, and event management that prioritizes participant comfort, ISBR 2027 aims to deliver a positive and memorable running experience in Batam.',
         ],
     ],
 
@@ -218,6 +217,7 @@ return [
         'message' => 'Message',
         'message_placeholder' => 'Type your message here...',
         'submit' => 'Submit Message',
+        'success' => 'Your message has been sent successfully. Thank you for contacting ISBR.',
         'instagram' => 'Instagram',
         'location' => 'Location',
         'image_alt' => 'Contact Ibnu Sina Batam Run 2027',

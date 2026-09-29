@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ContactController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,6 +30,10 @@ Route::prefix('{locale}')
         foreach ($publicPages as $name => [$uri, $view]) {
             Route::view($uri, $view)->name($name);
         }
+
+        Route::post('/contact', [ContactController::class, 'store'])
+            ->middleware('throttle:5,1')
+            ->name('contact.submit');
 
         Route::get('/{path}', fn () => abort(404))
             ->where('path', '.*');
