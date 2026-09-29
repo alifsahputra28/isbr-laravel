@@ -25,7 +25,14 @@ class ContactFormTest extends TestCase
             ->assertSee('action="'.route('contact.submit', ['locale' => 'id']).'"', false)
             ->assertSee('form="contact-form"', false)
             ->assertSee('name="full_name"', false)
-            ->assertSee('type="submit"', false);
+            ->assertSee('type="submit"', false)
+            ->assertSee('href="mailto:ibsirun@yapista.org"', false)
+            ->assertSee('ibsirun@yapista.org')
+            ->assertSee('href="https://www.instagram.com/ibnusinabatamrun/"', false)
+            ->assertSee('target="_blank"', false)
+            ->assertSee('rel="noopener noreferrer"', false)
+            ->assertSee('@ibnusinabatamrun')
+            ->assertSee('Lubuk Baja Kota, Lubuk Baja, Batam City, Riau Islands 29444');
 
         $this->assertSame(3, substr_count((string) $response->getContent(), 'form="contact-form"'));
     }

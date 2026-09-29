@@ -595,7 +595,12 @@
                             Email
                         </p>
 
-                        <p class="mt-3 text-lg font-semibold text-heading">-</p>
+                        <a
+                            href="mailto:ibsirun@yapista.org"
+                            class="mt-3 inline-block break-words text-lg font-semibold text-heading transition-colors hover:text-brand-700"
+                        >
+                            ibsirun@yapista.org
+                        </a>
 
                     </div>
 
@@ -613,7 +618,14 @@
                             {{ __('site.contact.instagram') }}
                         </p>
 
-                        <p class="mt-3 text-lg font-semibold text-heading">-</p>
+                        <a
+                            href="https://www.instagram.com/ibnusinabatamrun/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="mt-3 inline-block break-words text-lg font-semibold text-heading transition-colors hover:text-brand-700"
+                        >
+                            @ibnusinabatamrun
+                        </a>
 
                     </div>
 
@@ -631,7 +643,9 @@
                             {{ __('site.contact.location') }}
                         </p>
 
-                        <p class="mt-3 text-lg font-semibold text-heading">-</p>
+                        <p class="mt-3 break-words text-lg font-semibold text-heading">
+                            Lubuk Baja Kota, Lubuk Baja, Batam City, Riau Islands 29444
+                        </p>
 
                     </div>
 

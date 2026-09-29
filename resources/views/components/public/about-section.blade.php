@@ -8,8 +8,9 @@
     >
 
         <div
-            class="grid items-start
-                   gap-12
+            class="grid min-w-0 grid-cols-1 items-start
+                   gap-8
+                   sm:gap-10
                    lg:grid-cols-[0.85fr_1.35fr]
                    lg:gap-24"
         >
@@ -17,7 +18,7 @@
             {{-- =========================
                  LEFT COLUMN
             ========================== --}}
-            <div>
+            <div class="min-w-0">
 
                 <h2
                     class="max-w-[430px]
@@ -38,11 +39,12 @@
             {{-- =========================
                  RIGHT COLUMN
             ========================== --}}
-            <div>
+            <div class="min-w-0">
 
                 {{-- DESCRIPTION --}}
                 <p
                     class="max-w-[650px]
+                           break-words
                            text-[17px]
                            font-normal
                            leading-[1.8]
@@ -63,7 +65,18 @@
                                overflow-hidden
                                bg-surface-soft"
                     >
-                        <iframe width="560" height="315" src="https://www.youtube.com/embed/2fOBYdaZUM8?si=7p4-YIxB0nG5Wxe7" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                        <iframe
+                            width="560"
+                            height="315"
+                            src="https://www.youtube.com/embed/2fOBYdaZUM8?si=7p4-YIxB0nG5Wxe7"
+                            title="YouTube video player"
+                            class="block h-full w-full"
+                            frameborder="0"
+                            loading="lazy"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            referrerpolicy="strict-origin-when-cross-origin"
+                            allowfullscreen
+                        ></iframe>
                     </div>
 
                 </div>
