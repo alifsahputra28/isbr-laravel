@@ -56,7 +56,7 @@ return [
 
     'about_home' => [
         'heading' => "This race isn't simply about running.",
-        'description' => "It’s about running through the city, sharing the road, and experiencing the energy that defines Ring Of Nagoya City.",
+        'description' => 'It’s about running through the city, sharing the road, and experiencing the energy that defines Ring Of Nagoya City.',
         'cta' => 'Selengkapnya Tentang Lomba',
         'image_alt' => 'Pelari Ibnu Sina Batam Run 2027',
     ],
@@ -218,6 +218,7 @@ return [
         'message_placeholder' => 'Tulis pesan Anda di sini...',
         'submit' => 'Kirim Pesan',
         'success' => 'Pesan Anda berhasil dikirim. Terima kasih telah menghubungi ISBR.',
+        'error' => 'Pesan belum dapat dikirim. Silakan coba kembali beberapa saat lagi.',
         'instagram' => 'Instagram',
         'location' => 'Lokasi',
         'image_alt' => 'Hubungi Ibnu Sina Batam Run 2027',
@@ -229,6 +230,8 @@ return [
         'newsletter_label' => 'Berlangganan pembaruan ISBR',
         'name' => 'Nama',
         'email' => 'Email',
+        'subscribe_success' => 'Terima kasih. Anda telah berlangganan informasi ISBR.',
+        'subscribe_error' => 'Langganan belum dapat diproses. Silakan coba kembali beberapa saat lagi.',
         'quick_links' => 'Tautan Cepat',
         'race_categories' => 'Kategori Lomba',
         'race_information' => 'Informasi Lomba',

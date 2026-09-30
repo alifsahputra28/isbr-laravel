@@ -56,7 +56,7 @@ return [
 
     'about_home' => [
         'heading' => "This race isn't simply about running.",
-        'description' => "It’s about running through the city, sharing the road, and experiencing the energy that defines Ring Of Nagoya City.",
+        'description' => 'It’s about running through the city, sharing the road, and experiencing the energy that defines Ring Of Nagoya City.',
         'cta' => 'More About The Race',
         'image_alt' => 'Ibnu Sina Batam Run 2027 runners',
     ],
@@ -218,6 +218,7 @@ return [
         'message_placeholder' => 'Type your message here...',
         'submit' => 'Submit Message',
         'success' => 'Your message has been sent successfully. Thank you for contacting ISBR.',
+        'error' => 'Your message could not be sent. Please try again in a moment.',
         'instagram' => 'Instagram',
         'location' => 'Location',
         'image_alt' => 'Contact Ibnu Sina Batam Run 2027',
@@ -229,6 +230,8 @@ return [
         'newsletter_label' => 'ISBR newsletter subscription',
         'name' => 'Name',
         'email' => 'Email',
+        'subscribe_success' => 'Thank you. You are now subscribed to ISBR updates.',
+        'subscribe_error' => 'Your subscription could not be processed. Please try again in a moment.',
         'quick_links' => 'Quick Links',
         'race_categories' => 'Race Categories',
         'race_information' => 'Race Information',

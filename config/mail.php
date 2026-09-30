@@ -16,8 +16,6 @@ return [
 
     'default' => env('MAIL_MAILER', 'log'),
 
-    'contact_to' => env('CONTACT_TO_ADDRESS'),
-
     /*
     |--------------------------------------------------------------------------
     | Mailer Configurations

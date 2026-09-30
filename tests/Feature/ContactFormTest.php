@@ -2,17 +2,24 @@
 
 namespace Tests\Feature;
 
-use App\Mail\ContactMessageMail;
-use Illuminate\Support\Facades\Mail;
+use Illuminate\Http\Client\Request;
+use Illuminate\Support\Facades\Http;
 use Tests\TestCase;
 
 class ContactFormTest extends TestCase
 {
+    private const WEBHOOK_URL = 'https://webhook.example.test/google-sheets';
+
     protected function setUp(): void
     {
         parent::setUp();
 
-        config(['mail.contact_to' => 'contact@example.com']);
+        config([
+            'services.google_sheets.webhook_url' => self::WEBHOOK_URL,
+            'services.google_sheets.webhook_secret' => 'test-webhook-secret',
+        ]);
+
+        Http::preventStrayRequests();
     }
 
     public function test_contact_page_connects_external_interest_controls_to_the_form(): void
@@ -32,14 +39,17 @@ class ContactFormTest extends TestCase
             ->assertSee('target="_blank"', false)
             ->assertSee('rel="noopener noreferrer"', false)
             ->assertSee('@ibnusinabatamrun')
-            ->assertSee('Lubuk Baja Kota, Lubuk Baja, Batam City, Riau Islands 29444');
+            ->assertSee('Lubuk Baja Kota, Lubuk Baja, Batam City, Riau Islands 29444')
+            ->assertDontSee('test-webhook-secret');
 
         $this->assertSame(3, substr_count((string) $response->getContent(), 'form="contact-form"'));
     }
 
-    public function test_indonesian_contact_submission_sends_mail_and_redirects_with_localized_success(): void
+    public function test_valid_indonesian_contact_request_sends_expected_payload_and_returns_success(): void
     {
-        Mail::fake();
+        Http::fake([
+            self::WEBHOOK_URL => Http::response(['success' => true]),
+        ]);
 
         $payload = [
             'interest' => 'participation',
@@ -60,20 +70,25 @@ class ContactFormTest extends TestCase
                 'Pesan Anda berhasil dikirim. Terima kasih telah menghubungi ISBR.'
             );
 
-        Mail::assertSent(ContactMessageMail::class, function (ContactMessageMail $mail) use ($payload): bool {
-            $replyTo = $mail->envelope()->replyTo[0] ?? null;
-
-            return $mail->data === $payload
-                && $mail->hasTo('contact@example.com')
-                && $mail->envelope()->subject === 'New Contact Message — ISBR 2027'
-                && $replyTo?->address === $payload['email']
-                && $replyTo?->name === $payload['full_name'];
+        Http::assertSent(function (Request $request) use ($payload): bool {
+            return $request->url() === self::WEBHOOK_URL
+                && $request['action'] === 'contact'
+                && $request['secret'] === 'test-webhook-secret'
+                && $request['interest'] === $payload['interest']
+                && $request['full_name'] === $payload['full_name']
+                && $request['email'] === $payload['email']
+                && $request['phone'] === ''
+                && $request['subject'] === $payload['subject']
+                && $request['message'] === $payload['message']
+                && $request['language'] === 'ID';
         });
     }
 
-    public function test_english_contact_submission_accepts_optional_phone_and_uses_english_success(): void
+    public function test_valid_english_contact_request_sends_english_locale_and_optional_phone(): void
     {
-        Mail::fake();
+        Http::fake([
+            self::WEBHOOK_URL => Http::response(['success' => true]),
+        ]);
 
         $payload = [
             'interest' => 'sponsorship',
@@ -95,12 +110,13 @@ class ContactFormTest extends TestCase
                 'Your message has been sent successfully. Thank you for contacting ISBR.'
             );
 
-        Mail::assertSent(ContactMessageMail::class, fn (ContactMessageMail $mail): bool => $mail->data === $payload);
+        Http::assertSent(fn (Request $request): bool => $request['phone'] === $payload['phone']
+            && $request['language'] === 'EN');
     }
 
     public function test_contact_validation_rejects_invalid_input_and_preserves_old_input(): void
     {
-        Mail::fake();
+        Http::fake();
 
         $response = $this
             ->from(route('contact', ['locale' => 'id']))
@@ -115,42 +131,60 @@ class ContactFormTest extends TestCase
 
         $response
             ->assertRedirect(route('contact', ['locale' => 'id']))
-            ->assertSessionHasErrors(['interest', 'email', 'phone', 'subject', 'message'])
+            ->assertSessionHasErrors(['interest', 'email', 'phone', 'subject', 'message'], null, 'contact')
             ->assertSessionHasInput('full_name', 'Nama yang dipertahankan');
 
-        Mail::assertNothingSent();
+        Http::assertNothingSent();
     }
 
-    public function test_contact_email_escapes_user_content_and_formats_phone(): void
+    public function test_contact_webhook_failure_returns_localized_error_and_preserves_input(): void
     {
-        $html = (new ContactMessageMail([
-            'interest' => 'other',
-            'full_name' => '<script>alert("name")</script>',
-            'email' => 'runner@example.com',
-            'phone' => '81234567890',
-            'subject' => '<b>Subject</b>',
-            'message' => "First line\n<script>alert('message')</script>",
-        ]))->render();
+        Http::fake([
+            self::WEBHOOK_URL => Http::response(['success' => false, 'message' => 'Internal detail']),
+        ]);
 
-        $this->assertStringNotContainsString('<script>', $html);
-        $this->assertStringContainsString('&lt;script&gt;', $html);
-        $this->assertStringContainsString('+62 81234567890', $html);
-        $this->assertStringContainsString("First line<br />\n&lt;script&gt;", $html);
+        $response = $this
+            ->from(route('contact', ['locale' => 'id']))
+            ->post(route('contact.submit', ['locale' => 'id']), [
+                'interest' => 'other',
+                'full_name' => 'Pelari ISBR',
+                'email' => 'runner@example.com',
+                'subject' => 'Informasi',
+                'message' => 'Mohon informasi.',
+            ]);
 
-        $withoutPhoneHtml = (new ContactMessageMail([
+        $response
+            ->assertRedirect(route('contact', ['locale' => 'id']))
+            ->assertSessionHas('contact_error', 'Pesan belum dapat dikirim. Silakan coba kembali beberapa saat lagi.')
+            ->assertSessionHasInput('email', 'runner@example.com')
+            ->assertSessionMissing('contact_success');
+    }
+
+    public function test_missing_webhook_configuration_fails_safely_without_an_http_request(): void
+    {
+        config([
+            'services.google_sheets.webhook_url' => null,
+            'services.google_sheets.webhook_secret' => null,
+        ]);
+
+        Http::fake();
+
+        $this->post(route('contact.submit', ['locale' => 'en']), [
             'interest' => 'participation',
             'full_name' => 'Runner',
             'email' => 'runner@example.com',
             'subject' => 'Race information',
             'message' => 'Please send more information.',
-        ]))->render();
+        ])->assertSessionHas('contact_error', 'Your message could not be sent. Please try again in a moment.');
 
-        $this->assertMatchesRegularExpression('/Phone<\/td>\s*<td[^>]*>-<\/td>/', $withoutPhoneHtml);
+        Http::assertNothingSent();
     }
 
     public function test_contact_submission_is_rate_limited_after_five_requests_per_minute(): void
     {
-        Mail::fake();
+        Http::fake([
+            self::WEBHOOK_URL => Http::response(['success' => true]),
+        ]);
 
         $payload = [
             'interest' => 'other',
@@ -168,6 +202,6 @@ class ContactFormTest extends TestCase
         $this->post(route('contact.submit', ['locale' => 'id']), $payload)
             ->assertTooManyRequests();
 
-        Mail::assertSent(ContactMessageMail::class, 5);
+        Http::assertSentCount(5);
     }
 }

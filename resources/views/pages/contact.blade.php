@@ -238,7 +238,7 @@
 
                         </div>
 
-                        @error('interest')
+                        @error('interest', 'contact')
                             <p class="mt-2 text-sm text-danger">{{ $message }}</p>
                         @enderror
                     </div>
@@ -293,6 +293,15 @@
                             </div>
                         @endif
 
+                        @if (session('contact_error'))
+                            <div
+                                role="alert"
+                                class="mb-5 rounded-lg border border-danger/30 bg-danger/5 px-4 py-3 text-sm text-danger"
+                            >
+                                {{ session('contact_error') }}
+                            </div>
+                        @endif
+
                         <form
                             id="contact-form"
                             action="{{ route('contact.submit', ['locale' => app()->getLocale()]) }}"
@@ -336,7 +345,7 @@
                                        focus:ring-brand-500"
                             >
 
-                            @error('full_name')
+                            @error('full_name', 'contact')
                                 <p class="mt-2 text-sm text-danger">{{ $message }}</p>
                             @enderror
 
@@ -378,7 +387,7 @@
                                        focus:ring-brand-500"
                             >
 
-                            @error('email')
+                            @error('email', 'contact')
                                 <p class="mt-2 text-sm text-danger">{{ $message }}</p>
                             @enderror
 
@@ -438,7 +447,7 @@
 
                             </div>
 
-                            @error('phone')
+                            @error('phone', 'contact')
                                 <p class="mt-2 text-sm text-danger">{{ $message }}</p>
                             @enderror
 
@@ -479,7 +488,7 @@
                                        focus:ring-brand-500"
                             >
 
-                            @error('subject')
+                            @error('subject', 'contact')
                                 <p class="mt-2 text-sm text-danger">{{ $message }}</p>
                             @enderror
 
@@ -521,7 +530,7 @@
                                        focus:ring-brand-500"
                             >{{ old('message') }}</textarea>
 
-                            @error('message')
+                            @error('message', 'contact')
                                 <p class="mt-2 text-sm text-danger">{{ $message }}</p>
                             @enderror
 

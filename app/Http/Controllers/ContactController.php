@@ -2,16 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Mail\ContactMessageMail;
+use App\Services\GoogleSheetsWebhook;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Mail;
 
 class ContactController extends Controller
 {
+    public function __construct(
+        private readonly GoogleSheetsWebhook $googleSheets,
+    ) {}
+
     public function store(Request $request): RedirectResponse
     {
-        $validated = $request->validate([
+        $validated = $request->validateWithBag('contact', [
             'interest' => ['required', 'in:participation,sponsorship,other'],
             'full_name' => ['required', 'string', 'max:100'],
             'email' => ['required', 'email', 'max:150'],
@@ -20,8 +23,22 @@ class ContactController extends Controller
             'message' => ['required', 'string', 'max:3000'],
         ]);
 
-        Mail::to(config('mail.contact_to'))
-            ->send(new ContactMessageMail($validated));
+        $sent = $this->googleSheets->send([
+            'action' => 'contact',
+            'interest' => $validated['interest'],
+            'full_name' => $validated['full_name'],
+            'email' => $validated['email'],
+            'phone' => $validated['phone'] ?? '',
+            'subject' => $validated['subject'],
+            'message' => $validated['message'],
+            'language' => strtoupper(app()->getLocale()),
+        ]);
+
+        if (! $sent) {
+            return back()
+                ->withInput()
+                ->with('contact_error', __('site.contact.error'));
+        }
 
         return back()->with('contact_success', __('site.contact.success'));
     }

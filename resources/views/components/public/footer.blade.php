@@ -48,11 +48,38 @@
 
             {{-- RIGHT: FORM --}}
             <form
+                action="{{ route('subscribe.store', ['locale' => app()->getLocale()]) }}"
+                method="POST"
                 class="grid gap-3
                        sm:grid-cols-2
                        xl:grid-cols-[1fr_1fr_auto]"
                 aria-label="{{ __('site.footer.newsletter_label') }}"
             >
+                @csrf
+
+                @if (session('subscribe_success'))
+                    <div
+                        role="status"
+                        class="rounded-[4px] border border-brand-300/40 bg-brand-900/50 px-4 py-3 text-sm text-white sm:col-span-2 xl:col-span-3"
+                    >
+                        {{ session('subscribe_success') }}
+                    </div>
+                @endif
+
+                @if (session('subscribe_error'))
+                    <div
+                        role="alert"
+                        class="rounded-[4px] border border-white/30 bg-white/10 px-4 py-3 text-sm text-white sm:col-span-2 xl:col-span-3"
+                    >
+                        {{ session('subscribe_error') }}
+                    </div>
+                @endif
+
+                @if (isset($errors) && $errors->getBag('subscribe')->has('email'))
+                    <p class="text-sm text-white sm:col-span-2 xl:col-span-3">
+                        {{ $errors->getBag('subscribe')->first('email') }}
+                    </p>
+                @endif
 
                 {{-- NAME --}}
                 <div>
@@ -67,7 +94,9 @@
                         type="text"
                         id="subscribe-name"
                         name="name"
+                        value="{{ old('name') }}"
                         placeholder="{{ __('site.footer.name') }}"
+                        autocomplete="name"
                         class="block h-[54px]
                                w-full
                                rounded-[4px]
@@ -96,7 +125,10 @@
                         type="email"
                         id="subscribe-email"
                         name="email"
+                        value="{{ old('email') }}"
                         placeholder="Email"
+                        required
+                        autocomplete="email"
                         class="block h-[54px]
                                w-full
                                rounded-[4px]
@@ -111,10 +143,9 @@
                     >
                 </div>
 
-
                 {{-- BUTTON --}}
                 <button
-                    type="button"
+                    type="submit"
                     class="h-[54px]
                            rounded-[4px]
                            bg-accent-500
