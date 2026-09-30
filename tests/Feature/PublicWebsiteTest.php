@@ -113,7 +113,7 @@ class PublicWebsiteTest extends TestCase
             ->assertOk()
             ->assertSee('Beranda')
             ->assertSee('Lomba ini bukan sekadar tentang berlari.')
-            ->assertSee('Tertarik?');
+            ->assertSee('Interested?');
 
         $this->get(route('home', ['locale' => 'en']))
             ->assertOk()

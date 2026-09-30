@@ -1,11 +1,22 @@
-<div
-    {{ $attributes->class([
-        'flex min-h-[82px] w-full max-w-[170px] items-center justify-center rounded-lg border border-line bg-surface-soft px-4 py-4 text-center',
-    ]) }}
->
-    <p class="text-[12px] font-medium leading-5 text-muted">
-        {{ __('site.partners.slot_line_one') }}
-        <br>
-        <span class="font-semibold text-heading">{{ __('site.partners.slot_line_two') }}</span>
-    </p>
+@props([
+    'logo' => null,
+    'alt' => '',
+    'width' => null,
+    'height' => null,
+])
+
+<div {{ $attributes->class('flex h-24 w-full items-center justify-center sm:h-28') }}>
+    @if ($logo)
+        <img
+            src="{{ $logo }}"
+            alt="{{ $alt }}"
+            @if ($width) width="{{ $width }}" @endif
+            @if ($height) height="{{ $height }}" @endif
+            loading="lazy"
+            decoding="async"
+            class="max-h-24 max-w-full object-contain sm:max-h-28"
+        >
+    @else
+        <x-public.partner-placeholder />
+    @endif
 </div>

@@ -96,17 +96,26 @@ return [
     ],
 
     'partners' => [
-        'label' => 'Partner & Sponsor',
-        'title' => 'Dukung Perlombaan',
-        'groups' => [
-            ['title' => 'Partner Utama', 'slots' => 4],
-            ['title' => 'Partner Resmi', 'slots' => 5],
-            ['title' => 'Co-Sponsor', 'slots' => 12],
-            ['title' => 'Partner Perjalanan', 'slots' => 3],
-            ['title' => 'Partner Komunitas', 'slots' => 4],
+        'eyebrow' => 'Partner & Sponsor',
+        'title' => 'Mitra Resmi',
+        'description' => 'Institusi dan brand yang mendukung penyelenggaraan Ibnu Sina Batam Run 2027.',
+        'primary' => [
+            'initiator' => 'Inisiator',
+            'organized_by' => 'Diselenggarakan Oleh',
+            'powered_by' => 'Didukung Oleh',
+            'institutional_partner' => 'Mitra Institusi',
         ],
-        'slot_line_one' => 'Tertarik?',
-        'slot_line_two' => 'Tempatkan Logo Anda',
+        'official_heading' => 'Mitra Resmi',
+        'official' => [
+            'hydration' => 'Mitra Hidrasi Resmi',
+            'recovery' => 'Mitra Pemulihan Resmi',
+            'insurance' => 'Mitra Asuransi Resmi',
+            'isotonic' => 'Mitra Isotonik Resmi',
+            'apparel' => 'Mitra Apparel Resmi',
+        ],
+        'supporting_heading' => 'Mitra Pendukung',
+        'placeholder_line_one' => 'Interested?',
+        'placeholder_line_two' => 'Place Your Logo',
     ],
 
     'coming_soon' => [

@@ -96,17 +96,26 @@ return [
     ],
 
     'partners' => [
-        'label' => 'Partners & Sponsors',
-        'title' => 'Support The Race',
-        'groups' => [
-            ['title' => 'Main Partners', 'slots' => 4],
-            ['title' => 'Official Partners', 'slots' => 5],
-            ['title' => 'Co-Sponsor', 'slots' => 12],
-            ['title' => 'Travel Partners', 'slots' => 3],
-            ['title' => 'Community Partners', 'slots' => 4],
+        'eyebrow' => 'Partners & Sponsors',
+        'title' => 'Official Partners',
+        'description' => 'Organizations and brands supporting Ibnu Sina Batam Run 2027.',
+        'primary' => [
+            'initiator' => 'Initiator',
+            'organized_by' => 'Organized By',
+            'powered_by' => 'Powered By',
+            'institutional_partner' => 'Institutional Partner',
         ],
-        'slot_line_one' => 'Interested?',
-        'slot_line_two' => 'Place Your Logo',
+        'official_heading' => 'Official Partners',
+        'official' => [
+            'hydration' => 'Official Hydration Partner',
+            'recovery' => 'Official Recovery Partner',
+            'insurance' => 'Official Insurance Partner',
+            'isotonic' => 'Official Isotonic Partner',
+            'apparel' => 'Official Apparel Partner',
+        ],
+        'supporting_heading' => 'Supporting Partners',
+        'placeholder_line_one' => 'Interested?',
+        'placeholder_line_two' => 'Place Your Logo',
     ],
 
     'coming_soon' => [

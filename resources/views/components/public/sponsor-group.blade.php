@@ -1,20 +1,24 @@
 @props([
     'title',
-    'slots' => 1,
+    'logo' => null,
+    'alt' => '',
+    'width' => null,
+    'height' => null,
 ])
 
-<section {{ $attributes }}>
-    <div class="flex items-center justify-center gap-4">
-        <span class="h-px w-full max-w-24 bg-line" aria-hidden="true"></span>
-        <h3 class="shrink-0 text-center text-[10px] font-medium uppercase tracking-[0.18em] text-muted">
+<section {{ $attributes->class('min-w-0') }}>
+    <div class="flex min-h-8 items-start gap-3">
+        <h4 class="min-w-0 text-[10px] font-semibold uppercase leading-4 tracking-[0.2em] text-muted">
             {{ $title }}
-        </h3>
-        <span class="h-px w-full max-w-24 bg-line" aria-hidden="true"></span>
+        </h4>
+        <span class="mt-2 h-px min-w-4 flex-1 bg-line" aria-hidden="true"></span>
     </div>
 
-    <div class="mt-7 grid grid-cols-2 justify-items-center gap-x-5 gap-y-6 sm:grid-cols-3 lg:grid-cols-4">
-        @for ($slot = 0; $slot < $slots; $slot++)
-            <x-public.sponsor-slot />
-        @endfor
-    </div>
+    <x-public.sponsor-slot
+        class="mt-5"
+        :$logo
+        :$alt
+        :$width
+        :$height
+    />
 </section>
