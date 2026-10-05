@@ -11,44 +11,44 @@ class PublicWebsiteTest extends TestCase
      */
     private array $publicPages = [
         'home' => [
-            'id' => 'Ibnu Sina Batam Run 2027 (ISBR) | Website Resmi',
-            'en' => 'Ibnu Sina Batam Run 2027 (ISBR) | Official Event Website',
+            'id' => 'Ibnu Sina Batam Run 2027',
+            'en' => 'Ibnu Sina Batam Run 2027',
         ],
         'about' => [
-            'id' => 'Tentang | Ibnu Sina Batam Run 2027',
-            'en' => 'About | Ibnu Sina Batam Run 2027',
+            'id' => 'Tentang | ISBR 2027',
+            'en' => 'About | ISBR 2027',
         ],
         'race-info' => [
-            'id' => 'Informasi Lomba | Ibnu Sina Batam Run 2027',
-            'en' => 'Race Information | Ibnu Sina Batam Run 2027',
+            'id' => 'Informasi Lomba | ISBR 2027',
+            'en' => 'Race Info | ISBR 2027',
         ],
         'race-pack' => [
-            'id' => 'Race Pack Collection | Ibnu Sina Batam Run 2027',
-            'en' => 'Race Pack Collection | Ibnu Sina Batam Run 2027',
+            'id' => 'Race Pack | ISBR 2027',
+            'en' => 'Race Pack | ISBR 2027',
         ],
         'prices' => [
-            'id' => 'Harga Pendaftaran | Ibnu Sina Batam Run 2027',
-            'en' => 'Registration Prices | Ibnu Sina Batam Run 2027',
+            'id' => 'Harga Pendaftaran | ISBR 2027',
+            'en' => 'Registration Prices | ISBR 2027',
         ],
         'podium-prize' => [
-            'id' => 'Hadiah Podium | Ibnu Sina Batam Run 2027',
-            'en' => 'Podium Prize | Ibnu Sina Batam Run 2027',
+            'id' => 'Hadiah Podium | ISBR 2027',
+            'en' => 'Podium Prize | ISBR 2027',
         ],
         'faq' => [
-            'id' => 'FAQ | Ibnu Sina Batam Run 2027',
-            'en' => 'FAQ | Ibnu Sina Batam Run 2027',
+            'id' => 'FAQ | ISBR 2027',
+            'en' => 'FAQ | ISBR 2027',
         ],
         'terms' => [
-            'id' => 'Syarat & Ketentuan | Ibnu Sina Batam Run 2027',
-            'en' => 'Terms & Conditions | Ibnu Sina Batam Run 2027',
+            'id' => 'Syarat & Ketentuan | ISBR 2027',
+            'en' => 'Terms & Conditions | ISBR 2027',
         ],
         'contact' => [
-            'id' => 'Hubungi Kami | Ibnu Sina Batam Run 2027',
-            'en' => 'Contact Us | Ibnu Sina Batam Run 2027',
+            'id' => 'Hubungi Kami | ISBR 2027',
+            'en' => 'Contact | ISBR 2027',
         ],
         'route' => [
-            'id' => 'Rute Lomba | Ibnu Sina Batam Run 2027',
-            'en' => 'Race Route | Ibnu Sina Batam Run 2027',
+            'id' => 'Rute | ISBR 2027',
+            'en' => 'Route | ISBR 2027',
         ],
     ];
 
@@ -84,6 +84,8 @@ class PublicWebsiteTest extends TestCase
                     ->assertSee('<link rel="alternate" hreflang="'.$alternateLocale.'" href="'.$alternateUrl.'">', false)
                     ->assertSee('<link rel="alternate" hreflang="x-default" href="'.route($routeName, ['locale' => 'id']).'">', false)
                     ->assertSee('<meta property="og:locale" content="'.($locale === 'id' ? 'id_ID' : 'en_US').'">', false)
+                    ->assertSee('<meta property="og:title" content="'.e($titles[$locale]).'">', false)
+                    ->assertSee('<meta property="og:url" content="'.$url.'">', false)
                     ->assertSee('<meta name="twitter:card" content="summary_large_image">', false)
                     ->assertSee('<meta name="robots" content="noindex, nofollow">', false)
                     ->assertSee('href="'.route($routeName, ['locale' => $alternateLocale]).'"', false);
@@ -91,6 +93,76 @@ class PublicWebsiteTest extends TestCase
                 $this->assertSame(1, substr_count((string) $response->getContent(), '<h1'));
             }
         }
+    }
+
+    public function test_meta_descriptions_are_unique_and_substantive_in_each_locale(): void
+    {
+        foreach (['id', 'en'] as $locale) {
+            $descriptions = [];
+
+            foreach (array_keys($this->publicPages) as $routeName) {
+                $content = (string) $this->get(route($routeName, ['locale' => $locale]))->getContent();
+
+                preg_match('/<meta name="description" content="([^"]+)">/', $content, $matches);
+
+                $this->assertArrayHasKey(1, $matches);
+
+                $description = html_entity_decode($matches[1], ENT_QUOTES | ENT_HTML5, 'UTF-8');
+                $this->assertGreaterThanOrEqual(120, mb_strlen($description));
+                $this->assertLessThanOrEqual(170, mb_strlen($description));
+                $descriptions[] = $description;
+            }
+
+            $this->assertCount(count($descriptions), array_unique($descriptions));
+        }
+    }
+
+    public function test_every_public_page_has_one_descriptive_primary_heading(): void
+    {
+        $headings = [
+            'home' => ['id' => 'IBNU SINA BATAM RUN 2027', 'en' => 'IBNU SINA BATAM RUN 2027'],
+            'about' => ['id' => 'Tentang', 'en' => 'About Us'],
+            'race-info' => ['id' => 'Informasi Lomba', 'en' => 'Race Information'],
+            'race-pack' => ['id' => 'Race Pack', 'en' => 'Race Pack'],
+            'prices' => ['id' => 'Harga Pendaftaran', 'en' => 'Registration Prices'],
+            'podium-prize' => ['id' => 'Hadiah Podium', 'en' => 'Podium Prize'],
+            'route' => ['id' => 'Rute', 'en' => 'Route'],
+            'faq' => ['id' => 'Pertanyaan yang Sering Diajukan', 'en' => 'Frequently Asked Questions'],
+            'terms' => ['id' => 'Syarat & Ketentuan', 'en' => 'Terms & Conditions'],
+            'contact' => ['id' => 'Hubungi Kami', 'en' => 'Contact Us'],
+        ];
+
+        foreach ($headings as $routeName => $localizedHeadings) {
+            foreach ($localizedHeadings as $locale => $expectedHeading) {
+                $content = (string) $this->get(route($routeName, ['locale' => $locale]))->getContent();
+
+                preg_match_all('/<h1\b[^>]*>(.*?)<\/h1>/s', $content, $matches);
+
+                $this->assertCount(1, $matches[1]);
+
+                $heading = html_entity_decode(strip_tags($matches[1][0]), ENT_QUOTES | ENT_HTML5, 'UTF-8');
+                $heading = trim((string) preg_replace('/\s+/u', ' ', $heading));
+
+                $this->assertSame($expectedHeading, $heading);
+            }
+        }
+    }
+
+    public function test_homepage_exposes_website_structured_data_without_fake_event_schema(): void
+    {
+        $home = $this->get(route('home', ['locale' => 'id']));
+
+        $home
+            ->assertOk()
+            ->assertSee('<script type="application/ld+json">', false)
+            ->assertSee('"@type":"WebSite"', false)
+            ->assertSee('"name":"Ibnu Sina Batam Run 2027"', false)
+            ->assertSee('"alternateName":"ISBR 2027"', false)
+            ->assertDontSee('"@type":"Event"', false)
+            ->assertDontSee('SearchAction', false);
+
+        $this->get(route('about', ['locale' => 'id']))
+            ->assertDontSee('"@type":"WebSite"', false);
     }
 
     public function test_navigation_and_language_switcher_preserve_the_current_locale_and_page(): void
@@ -105,6 +177,17 @@ class PublicWebsiteTest extends TestCase
             ->assertOk()
             ->assertSee('href="'.route('about', ['locale' => 'id']).'"', false)
             ->assertSee('href="'.route('faq', ['locale' => 'en']).'"', false);
+    }
+
+    public function test_homepage_navigation_exposes_clear_locale_aware_links_to_priority_pages(): void
+    {
+        foreach (['id', 'en'] as $locale) {
+            $response = $this->get(route('home', ['locale' => $locale]))->assertOk();
+
+            foreach (['race-info', 'race-pack', 'prices', 'podium-prize', 'faq', 'contact'] as $routeName) {
+                $response->assertSee('href="'.route($routeName, ['locale' => $locale]).'"', false);
+            }
+        }
     }
 
     public function test_key_public_content_is_translated_without_changing_race_rules(): void

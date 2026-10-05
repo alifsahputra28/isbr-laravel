@@ -3,44 +3,44 @@
 return [
     'seo' => [
         'home' => [
-            'title' => 'Ibnu Sina Batam Run 2027 (ISBR) | Official Event Website',
-            'description' => 'Explore Ibnu Sina Batam Run 2027 (ISBR), including race categories, race information, Race Pack, Podium Prize, FAQ, and official event updates.',
+            'title' => 'Ibnu Sina Batam Run 2027',
+            'description' => 'Official website of Ibnu Sina Batam Run 2027 (ISBR), featuring race categories, Race Pack, Podium Prize, FAQ, route information, and official updates.',
         ],
         'about' => [
-            'title' => 'About | Ibnu Sina Batam Run 2027',
-            'description' => 'Discover Ibnu Sina Batam Run 2027, a race-day experience that brings runners, communities, and the spirit of the city together.',
+            'title' => 'About | ISBR 2027',
+            'description' => 'Discover Ibnu Sina Batam Run 2027, an event that brings runners, communities, and the public together for an organized race-day experience in Batam.',
         ],
         'race_info' => [
-            'title' => 'Race Information | Ibnu Sina Batam Run 2027',
+            'title' => 'Race Info | ISBR 2027',
             'description' => 'Explore race categories, participant requirements, Cut Off Time, BIB rules, medals, and safety support for Ibnu Sina Batam Run 2027.',
         ],
         'race_pack' => [
-            'title' => 'Race Pack Collection | Ibnu Sina Batam Run 2027',
+            'title' => 'Race Pack | ISBR 2027',
             'description' => 'Find Race Pack Collection information for Ibnu Sina Batam Run 2027, including identity verification and collection requirements.',
         ],
         'prices' => [
-            'title' => 'Registration Prices | Ibnu Sina Batam Run 2027',
-            'description' => 'Official registration prices for Ibnu Sina Batam Run 2027 categories will be published here once the information is available.',
+            'title' => 'Registration Prices | ISBR 2027',
+            'description' => 'Official registration prices for every Ibnu Sina Batam Run 2027 category will be published on this page once confirmed by the organizer.',
         ],
         'podium' => [
-            'title' => 'Podium Prize | Ibnu Sina Batam Run 2027',
-            'description' => 'Learn about podium categories, prizes, identity verification, winner attendance, and official results for Ibnu Sina Batam Run 2027.',
+            'title' => 'Podium Prize | ISBR 2027',
+            'description' => 'Learn about Podium Prize categories, identity verification, winner attendance, and the official result process for Ibnu Sina Batam Run 2027.',
         ],
         'faq' => [
-            'title' => 'FAQ | Ibnu Sina Batam Run 2027',
+            'title' => 'FAQ | ISBR 2027',
             'description' => 'Find official answers about categories, participant requirements, registration, BIB, Cut Off Time, Race Pack, medals, podium, and safety.',
         ],
         'terms' => [
-            'title' => 'Terms & Conditions | Ibnu Sina Batam Run 2027',
-            'description' => 'Read the Ibnu Sina Batam Run 2027 terms covering categories, registration, BIB, COT, Race Pack, safety, podium, and participants.',
+            'title' => 'Terms & Conditions | ISBR 2027',
+            'description' => 'Read the ISBR 2027 Terms & Conditions covering categories, registration, BIB, Cut Off Time, Race Pack, safety, podium, and participants.',
         ],
         'contact' => [
-            'title' => 'Contact Us | Ibnu Sina Batam Run 2027',
-            'description' => 'Contact the Ibnu Sina Batam Run 2027 team with questions about participation, partnerships, sponsorships, and event information.',
+            'title' => 'Contact | ISBR 2027',
+            'description' => 'Contact the Ibnu Sina Batam Run 2027 team through the official form with questions about participation, partnerships, sponsorships, and the event.',
         ],
         'route' => [
-            'title' => 'Race Route | Ibnu Sina Batam Run 2027',
-            'description' => 'The official Ibnu Sina Batam Run 2027 route will be published once the course map and details are confirmed by the Race Committee.',
+            'title' => 'Route | ISBR 2027',
+            'description' => 'The official Ibnu Sina Batam Run 2027 route will be published once the course map and route details are confirmed by the Race Committee.',
         ],
         'not_found' => [
             'title' => 'Page Not Found | Ibnu Sina Batam Run 2027',
@@ -51,13 +51,13 @@ return [
     'hero' => [
         'description' => 'Where the streets of Batam set the stage for runners to challenge their pace, take in the city atmosphere, and experience every moment from start to finish.',
         'race_information' => 'Race Information',
-        'learn_more' => 'Learn More',
+        'learn_more' => 'About',
     ],
 
     'about_home' => [
         'heading' => "This race isn't simply about running.",
         'description' => 'It’s about running through the city, sharing the road, and experiencing the energy that defines Ring Of Nagoya City.',
-        'cta' => 'More About The Race',
+        'cta' => 'Race Info',
         'image_alt' => 'Ibnu Sina Batam Run 2027 runners',
     ],
 
@@ -161,7 +161,7 @@ return [
 
     'race_pack' => [
         'label' => 'Race Day',
-        'title' => 'Race Pack Collection',
+        'title' => 'Race Pack',
         'description' => 'Race Pack Collection requirements for Ibnu Sina Batam Run 2027.',
         'information_title' => 'Collection Information',
         'fields' => ['Date', 'Time', 'Location', 'Address', 'Google Maps', 'Representative Collection Procedure'],
@@ -201,7 +201,7 @@ return [
 
     'route' => [
         'label' => 'Course Information',
-        'title' => 'Race Route',
+        'title' => 'Route',
         'description' => 'The official Ibnu Sina Batam Run 2027 route information is being prepared.',
     ],
 

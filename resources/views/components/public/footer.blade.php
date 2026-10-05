@@ -204,14 +204,36 @@
                 >
 
                     <a
-                        href="{{ route('race-info') }}"
+                        href="{{ route('home') }}"
                         class="w-fit
                                text-[14px]
                                text-white/90
                                transition-colors
                                hover:text-white"
                     >
-                        {{ __('site.footer.race_categories') }}
+                        {{ __('navigation.home') }}
+                    </a>
+
+                    <a
+                        href="{{ route('about') }}"
+                        class="w-fit
+                               text-[14px]
+                               text-white/90
+                               transition-colors
+                               hover:text-white"
+                    >
+                        {{ __('navigation.about') }}
+                    </a>
+
+                    <a
+                        href="{{ route('route') }}"
+                        class="w-fit
+                               text-[14px]
+                               text-white/90
+                               transition-colors
+                               hover:text-white"
+                    >
+                        {{ __('navigation.route') }}
                     </a>
 
                     <a
@@ -234,17 +256,6 @@
                                hover:text-white"
                     >
                         {{ __('navigation.terms') }}
-                    </a>
-
-                    <a
-                        href="{{ route('prices') }}"
-                        class="w-fit
-                               text-[14px]
-                               text-white/90
-                               transition-colors
-                               hover:text-white"
-                    >
-                        {{ __('site.footer.prices') }}
                     </a>
 
                 </nav>
@@ -294,6 +305,17 @@
                     </a>
 
                     <a
+                        href="{{ route('prices') }}"
+                        class="w-fit
+                               text-[14px]
+                               text-white/90
+                               transition-colors
+                               hover:text-white"
+                    >
+                        {{ __('site.footer.prices') }}
+                    </a>
+
+                    <a
                         href="{{ route('podium-prize') }}"
                         class="w-fit
                                text-[14px]
@@ -302,17 +324,6 @@
                                hover:text-white"
                     >
                         {{ __('site.footer.podium_prize') }}
-                    </a>
-
-                    <a
-                        href="{{ route('route') }}"
-                        class="w-fit
-                               text-[14px]
-                               text-white/90
-                               transition-colors
-                               hover:text-white"
-                    >
-                        {{ __('site.footer.race_route') }}
                     </a>
 
                 </nav>

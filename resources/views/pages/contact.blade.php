@@ -69,6 +69,10 @@
 
                 <div>
 
+                    <h1 class="sr-only">
+                        {{ __('site.contact.label') }}
+                    </h1>
+
                     <p
                         class="text-[12px]
                                font-semibold
@@ -80,7 +84,7 @@
                     </p>
 
 
-                    <h1
+                    <p
                         class="mt-3
                                max-w-[700px]
                                text-[42px]
@@ -92,7 +96,7 @@
                                lg:text-[64px]"
                     >
                         {{ __('site.contact.title') }}
-                    </h1>
+                    </p>
 
                 </div>
 
