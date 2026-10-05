@@ -1,10 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
-
 @import 'tailwindcss';
 @import '../../node_modules/preline/variants.css';
 @import '../../node_modules/preline/css/themes/theme.css';
 
-@source '../../node_modules/preline/dist/*.js';
+@source '../../node_modules/preline/dist/accordion-non-auto.js';
+@source '../../node_modules/preline/dist/collapse-non-auto.js';
+@source '../../node_modules/preline/dist/dropdown-non-auto.js';
+@source '../../node_modules/preline/dist/tabs-non-auto.js';
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 @source '../../storage/framework/views/*.php';
 @source '../**/*.blade.php';

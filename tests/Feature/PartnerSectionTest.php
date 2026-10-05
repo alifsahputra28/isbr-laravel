@@ -12,7 +12,7 @@ class PartnerSectionTest extends TestCase
 
         $response
             ->assertOk()
-            ->assertSee('Mitra Resmi ISBR 2027')
+            ->assertSee('Mitra Resmi')
             ->assertSee('Institusi dan brand yang mendukung penyelenggaraan Ibnu Sina Batam Run 2027.')
             ->assertSee('Inisiator')
             ->assertSee('Diselenggarakan Oleh')

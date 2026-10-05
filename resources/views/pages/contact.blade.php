@@ -25,10 +25,12 @@
 
             {{-- BACKGROUND IMAGE --}}
             <img
-                src="{{ asset('assets/images/event/contact.webp') }}"
+                src="{{ asset('assets/images/event/contact-1440.webp') }}"
+                srcset="{{ asset('assets/images/event/contact-1440.webp') }} 1440w, {{ asset('assets/images/event/contact-2880.webp') }} 2880w"
+                sizes="100vw"
                 alt="{{ __('site.contact.image_alt') }}"
-                width="6000"
-                height="3376"
+                width="1440"
+                height="810"
                 loading="eager"
                 fetchpriority="high"
                 decoding="async"

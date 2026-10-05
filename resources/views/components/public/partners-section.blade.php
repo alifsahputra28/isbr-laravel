@@ -11,8 +11,8 @@
             'title' => __('site.partners.primary.organized_by'),
             'logo' => asset('assets/images/supports/Logo The DOTS.webp'),
             'alt' => 'The DOTS',
-            'width' => 1258,
-            'height' => 1292,
+            'width' => 866,
+            'height' => 1142,
         ],
         [
             'title' => __('site.partners.primary.powered_by'),

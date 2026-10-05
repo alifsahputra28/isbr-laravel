@@ -1,8 +1,14 @@
-import { HSStaticMethods } from 'preline/non-auto';
+import HSAccordion from 'preline/plugins/accordion-non-auto';
+import HSCollapse from 'preline/plugins/collapse-non-auto';
+import HSDropdown from 'preline/plugins/dropdown-non-auto';
+import HSTabs from 'preline/plugins/tabs-non-auto';
 
-window.HSStaticMethods = HSStaticMethods;
-
-const initializePreline = () => HSStaticMethods.autoInit();
+const initializePreline = () => {
+    HSAccordion.autoInit();
+    HSCollapse.autoInit();
+    HSDropdown.autoInit();
+    HSTabs.autoInit();
+};
 
 const initializePublicNavbar = () => {
     const navbar = document.querySelector('[data-public-navbar][data-navbar-variant="overlay"]');

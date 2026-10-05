@@ -11,6 +11,8 @@
         <img
             src="{{ asset('assets/images/logo/logo_ibsirun_text.svg') }}"
             alt="Ibnu Sina Batam Run"
+            width="347"
+            height="109"
             class="isbr-page-loader__logo"
         >
     </div>
@@ -38,8 +40,8 @@
         visibility: visible;
 
         transition:
-            opacity 1000ms cubic-bezier(.4, 0, .2, 1),
-            visibility 1000ms cubic-bezier(.4, 0, .2, 1);
+            opacity 450ms cubic-bezier(.4, 0, .2, 1),
+            visibility 450ms cubic-bezier(.4, 0, .2, 1);
     }
 
 
@@ -280,11 +282,19 @@
          * Ini mencegah loader hanya berkedip sebentar
          * ketika halaman sangat cepat dimuat.
          */
-        const minimumDuration = 1100;
+        const minimumDuration = 700;
+        const maximumDuration = 4000;
 
         const startTime = performance.now();
+        let isLeaving = false;
 
         const hideLoader = () => {
+            if (isLeaving) {
+                return;
+            }
+
+            isLeaving = true;
+
             const elapsed = performance.now() - startTime;
 
             const remainingTime = Math.max(
@@ -295,27 +305,31 @@
             window.setTimeout(() => {
                 loader.classList.add('is-leaving');
 
-                /*
-                 * Setelah fade selesai,
-                 * benar-benar hapus loader dari DOM.
-                 */
-                window.setTimeout(() => {
+                const removeLoader = () => {
                     loader.remove();
-                }, 1050);
+                };
+
+                loader.addEventListener('transitionend', removeLoader, {
+                    once: true,
+                });
+
+                /* Fallback jika browser tidak mengirim transitionend. */
+                window.setTimeout(removeLoader, 550);
 
             }, remainingTime);
         };
 
 
         /*
-         * Tunggu sampai seluruh halaman:
-         * image, CSS, font, dll sudah selesai dimuat.
+         * DOM yang siap sudah cukup untuk menampilkan halaman. Resource
+         * non-critical seperti font eksternal dan image below-fold tidak perlu
+         * menahan visitor di balik loader.
          */
-        if (document.readyState === 'complete') {
+        if (document.readyState !== 'loading') {
             hideLoader();
         } else {
-            window.addEventListener(
-                'load',
+            document.addEventListener(
+                'DOMContentLoaded',
                 hideLoader,
                 { once: true }
             );
@@ -328,18 +342,7 @@
          * Jangan sampai loader terkunci selamanya
          * jika ada resource eksternal yang gagal load.
          */
-        window.setTimeout(() => {
-            if (
-                document.body.contains(loader) &&
-                !loader.classList.contains('is-leaving')
-            ) {
-                loader.classList.add('is-leaving');
-
-                window.setTimeout(() => {
-                    loader.remove();
-                }, 850);
-            }
-        }, 8000);
+        window.setTimeout(hideLoader, maximumDuration);
     })();
 </script>
 

@@ -11,10 +11,12 @@
 
         {{-- BACKGROUND IMAGE --}}
         <img
-            src="{{ asset('assets/images/event/hero.webp') }}"
+            src="{{ asset('assets/images/event/hero-1440.webp') }}"
+            srcset="{{ asset('assets/images/event/hero-1440.webp') }} 1440w, {{ asset('assets/images/event/hero-2880.webp') }} 2880w"
+            sizes="100vw"
             alt="Ibnu Sina Batam Run 2027"
-            width="6000"
-            height="4000"
+            width="1440"
+            height="960"
             loading="eager"
             fetchpriority="high"
             decoding="async"

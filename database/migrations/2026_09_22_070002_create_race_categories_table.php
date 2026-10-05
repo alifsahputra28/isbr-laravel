@@ -9,32 +9,32 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('race_categories', function (Blueprint $table) {
-        $table->id();
+            $table->id();
 
-        $table->foreignId('event_edition_id')
-            ->constrained()
-            ->restrictOnDelete();
+            $table->foreignId('event_edition_id')
+                ->constrained()
+                ->restrictOnDelete();
 
-        $table->string('name');
-        $table->string('slug');
+            $table->string('name');
+            $table->string('slug');
 
-        $table->decimal('distance_km', 6, 3)->nullable();
+            $table->decimal('distance_km', 6, 3)->nullable();
 
-        $table->unsignedInteger('quota')->nullable();
+            $table->unsignedInteger('quota')->nullable();
 
-        $table->unsignedBigInteger('price')->nullable();
+            $table->unsignedBigInteger('price')->nullable();
 
-        $table->string('status')->default('active');
+            $table->string('status')->default('active');
 
-        $table->unsignedInteger('sort_order')->default(0);
+            $table->unsignedInteger('sort_order')->default(0);
 
-        $table->timestamps();
+            $table->timestamps();
 
-        $table->unique([
-            'event_edition_id',
-            'slug',
-        ]);
-    });
+            $table->unique([
+                'event_edition_id',
+                'slug',
+            ]);
+        });
     }
 
     public function down(): void

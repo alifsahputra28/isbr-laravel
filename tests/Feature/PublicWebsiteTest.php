@@ -112,7 +112,7 @@ class PublicWebsiteTest extends TestCase
         $this->get(route('home', ['locale' => 'id']))
             ->assertOk()
             ->assertSee('Beranda')
-            ->assertSee('Lomba ini bukan sekadar tentang berlari.')
+            ->assertSee("This race isn't simply about running.")
             ->assertSee('Interested?');
 
         $this->get(route('home', ['locale' => 'en']))

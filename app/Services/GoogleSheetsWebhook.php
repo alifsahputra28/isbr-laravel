@@ -25,6 +25,7 @@ class GoogleSheetsWebhook
         try {
             $response = Http::acceptJson()
                 ->asJson()
+                ->connectTimeout(5)
                 ->timeout(10)
                 ->withOptions(['allow_redirects' => true])
                 ->post($url, [

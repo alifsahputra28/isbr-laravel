@@ -30,6 +30,7 @@
                             id="race-tab-overview"
                             data-hs-tab="#race-panel-overview"
                             aria-controls="race-panel-overview"
+                            aria-selected="true"
                             role="tab"
                         >
                             {{ __('site.race_info.tabs.overview') }}
@@ -40,6 +41,7 @@
                             id="race-tab-schedule"
                             data-hs-tab="#race-panel-schedule"
                             aria-controls="race-panel-schedule"
+                            aria-selected="false"
                             role="tab"
                         >
                             {{ __('site.race_info.tabs.schedule') }}
@@ -50,6 +52,7 @@
                             id="race-tab-rules"
                             data-hs-tab="#race-panel-rules"
                             aria-controls="race-panel-rules"
+                            aria-selected="false"
                             role="tab"
                         >
                             {{ __('site.race_info.tabs.rules') }}
@@ -60,6 +63,7 @@
                             id="race-tab-size"
                             data-hs-tab="#race-panel-size"
                             aria-controls="race-panel-size"
+                            aria-selected="false"
                             role="tab"
                         >
                             {{ __('site.race_info.tabs.size_chart') }}
