@@ -32,10 +32,11 @@
 </head>
 
 <body>
-
-    <div class="site-shell">
-        @yield('content')
-    </div>
+    <x-public.page-loader />
+    
+        <div class="site-shell">
+            @yield('content')
+        </div>
 
 </body>
 </html>
